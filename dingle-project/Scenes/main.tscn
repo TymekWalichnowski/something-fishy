@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=8 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://jh0kdbt45p46" path="res://Scripts/Player.cs" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://ydgxwu37il3" path="res://Scenes/testchair.tscn" id="4_kry3j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -35,7 +36,10 @@ script = ExtResource("2_bo1nx")
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.779808, 0.626019, 0, -0.626019, 0.779808, -0.36952, 5.11195, 6.00096)
 
+[node name="testchair2" parent="Player" instance=ExtResource("4_kry3j")]
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 0.26659217, -0.9809935, -2.536286)
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.576767, 1.9793, 0.0537452)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9115491, 1.1557701, 0.0537452)
 light_energy = 16.0
 light_size = 1.22

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ydgxwu37il3"]
+
+[ext_resource type="PackedScene" uid="uid://bm7l3kh63edk5" path="res://Assets/Models/testchair.glb" id="1_npb0q"]
+[ext_resource type="Shader" uid="uid://cx1oko4woniwi" path="res://Shaders/Toon.gdshader" id="2_remei"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_npb0q"]
+render_priority = 0
+shader = ExtResource("2_remei")
+shader_parameter/albedo = Color(0.96938103, 0, 0.45233518, 1)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[node name="testchair" instance=ExtResource("1_npb0q")]
+
+[node name="Cube" parent="." index="0"]
+material_overlay = SubResource("ShaderMaterial_npb0q")
