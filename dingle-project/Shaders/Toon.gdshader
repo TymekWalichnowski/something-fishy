@@ -25,17 +25,17 @@ float fresnel(float amount, vec3 normal, vec3 view)
 	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0)), amount);
 }
 
-void vertex() 
+void vertex()
 {
 	// Called for every vertex the material is visible on.
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
 }
 
-void fragment() 
+void fragment()
 {
 	// Called for every pixel the material is visible on.
 	float basic_fresnel = fresnel(4.0, NORMAL, VIEW);
-	
+
 	vec2 base_uv = UV;
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
 	ALBEDO = albedo.rgb * albedo_tex.rgb + (basic_fresnel * texture(fresnel_gradient, vec2(basic_fresnel, 0.0)).rgb * 1.0);
@@ -49,7 +49,7 @@ void fragment()
 	NORMAL_MAP_DEPTH = normal_scale;
 }
 
-void light() 
+void light()
 {
 	// Called for every pixel for every light affecting the material.
 	float dotproduct = clamp(dot(NORMAL, LIGHT), -0.9, 0.9);

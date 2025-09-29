@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://ydgxwu37il3"]
+[gd_scene load_steps=8 format=3 uid="uid://ydgxwu37il3"]
 
 [ext_resource type="PackedScene" uid="uid://bm7l3kh63edk5" path="res://Assets/Models/testchair.glb" id="1_npb0q"]
 [ext_resource type="Shader" uid="uid://cx1oko4woniwi" path="res://Shaders/Toon.gdshader" id="2_remei"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_npb0q"]
+[sub_resource type="Gradient" id="Gradient_vsan6"]
+offsets = PackedFloat32Array(0.5, 0.5)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d5wwh"]
+gradient = SubResource("Gradient_vsan6")
+
+[sub_resource type="Gradient" id="Gradient_2desc"]
+offsets = PackedFloat32Array(0.5, 0.75)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1gc0b"]
+gradient = SubResource("Gradient_2desc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vsan6"]
 render_priority = 0
 shader = ExtResource("2_remei")
-shader_parameter/albedo = Color(0.96938103, 0, 0.45233518, 1)
+shader_parameter/albedo = Color(1, 0, 1, 1)
 shader_parameter/point_size = 0.0
 shader_parameter/roughness = 0.0
 shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
@@ -17,8 +29,10 @@ shader_parameter/uv1_scale = Vector3(0, 0, 0)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(0, 0, 0)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_d5wwh")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_1gc0b")
 
 [node name="testchair" instance=ExtResource("1_npb0q")]
 
 [node name="Cube" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_npb0q")
+material_override = SubResource("ShaderMaterial_vsan6")

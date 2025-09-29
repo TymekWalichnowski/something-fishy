@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=13 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
+[ext_resource type="Shader" uid="uid://cx1oko4woniwi" path="res://Shaders/Toon.gdshader" id="1_kry3j"]
+[ext_resource type="Texture2D" uid="uid://bk2oam5536am5" path="res://Shaders/FernelGradiant.tres" id="2_21xkr"]
 [ext_resource type="Script" uid="uid://jh0kdbt45p46" path="res://Scripts/Player.cs" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://ydgxwu37il3" path="res://Scenes/testchair.tscn" id="4_kry3j"]
 
@@ -16,15 +18,40 @@ background_mode = 2
 sky = SubResource("Sky_bo1nx")
 tonemap_mode = 2
 
+[sub_resource type="Gradient" id="Gradient_6bp64"]
+offsets = PackedFloat32Array(0.5, 0.5)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_344ge"]
+gradient = SubResource("Gradient_6bp64")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
+render_priority = 0
+shader = ExtResource("1_kry3j")
+shader_parameter/albedo = Color(0, 0.62589175, 0.3014693, 1)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = SubResource("GradientTexture1D_344ge")
+shader_parameter/fresnel_gradient = ExtResource("2_21xkr")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bo1nx"]
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.800755, 0, -0.34751558)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gbba")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("ShaderMaterial_ynf5e")
 use_collision = true
 size = Vector3(50, 0.1, 50)
 material = SubResource("StandardMaterial3D_bo1nx")
@@ -40,6 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 0.779808, 0.626019, 0, -0.626019, 0.779808, 
 transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 0.26659217, -0.9809935, -2.536286)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9115491, 1.1557701, 0.0537452)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2507689, 0.98806465, 1.2833135)
+light_color = Color(1, 0, 1, 1)
 light_energy = 16.0
 light_size = 1.22
