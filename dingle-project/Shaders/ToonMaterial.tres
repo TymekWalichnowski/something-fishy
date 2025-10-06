@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://h8uhi55qwedq"]
+
+[ext_resource type="Shader" uid="uid://c8oqmho2mey3h" path="res://Shaders/Toon.gdshader" id="1_evm44"]
+[ext_resource type="Texture2D" uid="uid://da0r6er785of5" path="res://Shaders/color_gradient.tres" id="2_t1bnt"]
+[ext_resource type="Texture2D" uid="uid://b812j18ke7gyl" path="res://Shaders/fresnel_gradient.tres" id="3_o15it"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_evm44")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/point_size = 0.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/normal_scale = 0.0
+shader_parameter/uv1_scale = Vector3(0, 0, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(0, 0, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/color_gradient = ExtResource("2_t1bnt")
+shader_parameter/fresnel_gradient = ExtResource("3_o15it")

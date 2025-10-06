@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=11 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://jh0kdbt45p46" path="res://Scripts/Player.cs" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://cm02fvi1ywn3u" path="res://Scripts/WallShaderUpdater.cs" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://ydgxwu37il3" path="res://Scenes/testchair.tscn" id="4_kry3j"]
+[ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="5_21xkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -18,6 +20,8 @@ tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bo1nx"]
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8gbba"]
 
 [node name="Main" type="Node3D"]
 
@@ -41,7 +45,7 @@ script = ExtResource("2_bo1nx")
 transform = Transform3D(1, 0, 0, 0, 0.779808, 0.626019, 0, -0.626019, 0.779808, -0.36952, 5.11195, 6.00096)
 
 [node name="testchair2" parent="Player" instance=ExtResource("4_kry3j")]
-transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, 3.4518275, -0.9809935, -4.351133)
+transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -1.3263572, -0.9809935, 0.51097727)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2555633, 0.98806465, 2.327432)
@@ -54,3 +58,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9174697, 0.98806465, 2.327
 light_color = Color(0.26948076, 0.73195076, 0.99999994, 1)
 light_size = 1.0
 light_specular = 1.0
+
+[node name="World" type="Node3D" parent="." node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6840224, 0, 0)
+script = ExtResource("4_21xkr")
+Player = NodePath("../Player")
+SharedWallMaterial = ExtResource("5_21xkr")
+
+[node name="Cube" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841858e-07, 3.166531, 1.6543821)
+
+[node name="Wall" type="MeshInstance3D" parent="World/Cube"]
+transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, 0, 0, 0)
+mesh = SubResource("BoxMesh_8gbba")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_21xkr")
+
+[node name="Wall2" type="MeshInstance3D" parent="World/Cube"]
+transform = Transform3D(-4.371139e-08, 0, 13.495, 0, 5.295, 0, -1, 0, -5.898852e-07, 0, 0, 7.604506)
+mesh = SubResource("BoxMesh_8gbba")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_21xkr")

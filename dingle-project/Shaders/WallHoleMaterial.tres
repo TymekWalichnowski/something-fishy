@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://flen3e3pr3e3"]
+
+[ext_resource type="Shader" uid="uid://cvc55on2hi3u2" path="res://Shaders/WallHole.gdshader" id="1_w6gx3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_w6gx3")
+shader_parameter/player_position = Vector3(0, 0, 0)
+shader_parameter/alignment_threshold = 0.0
+shader_parameter/fade_threshold = 0.970000046075
