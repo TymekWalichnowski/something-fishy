@@ -30,6 +30,7 @@ public partial class Interactable : Area3D
 				if (parent.HasMethod("Interact") || parent != null)
 				{
 					parent.Call("Interact");
+					Player.CanMove(false);
 				}
 				else
 				{
@@ -41,13 +42,19 @@ public partial class Interactable : Area3D
 
 	private void OnBodyEntered(Node3D body)
 	{
-		GD.Print("Enter");
-		playerInside = true;
+		if (body is Player)
+		{
+			GD.Print("Enter");
+			playerInside = true;
+		}
 	}
 
 	private void OnBodyExited(Node3D body)
 	{
-		GD.Print("Exit");
-		playerInside = false;
+		if (body is Player)
+		{
+			GD.Print("Exit");
+			playerInside = false;
+		}
 	}
 }

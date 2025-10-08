@@ -1,0 +1,11 @@
+~ start
+Character: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- Gain Key
+	Nathan: Here take a key! [do! DialogueInteractions.GiveKey()]
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END

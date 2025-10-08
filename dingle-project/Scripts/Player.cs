@@ -6,9 +6,26 @@ public partial class Player : CharacterBody3D
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
 
+	public static bool canMove = true;
+
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector3 velocity = Velocity;
+		if (canMove)
+		{
+			Movement(delta);
+		}
+	}
+
+	// Can be used to freeze the player whenever wanted
+	public static void CanMove(bool t_canMove)
+	{
+		canMove = t_canMove;
+	}
+
+
+	void Movement(double delta)
+	{
+		Vector3 velocity = Velocity; 
 
 		// Add the gravity.
 		if (!IsOnFloor())
