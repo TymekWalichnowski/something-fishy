@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=12 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://jh0kdbt45p46" path="res://Scripts/Player.cs" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://cm02fvi1ywn3u" path="res://Scripts/WallShaderUpdater.cs" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://ydgxwu37il3" path="res://Scenes/testchair.tscn" id="4_kry3j"]
 [ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="5_21xkr"]
+[ext_resource type="PackedScene" uid="uid://cbfhygpilytip" path="res://Scenes/interactable.tscn" id="6_21xkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -65,17 +66,15 @@ script = ExtResource("4_21xkr")
 Player = NodePath("../Player")
 SharedWallMaterial = ExtResource("5_21xkr")
 
-[node name="Cube" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3841858e-07, 3.166531, 1.6543821)
-
-[node name="Wall" type="MeshInstance3D" parent="World/Cube"]
-transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, 0, 0, 0)
+[node name="Wall" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, 2.3841858e-07, 3.166531, 1.6543821)
 mesh = SubResource("BoxMesh_8gbba")
-skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_21xkr")
 
-[node name="Wall2" type="MeshInstance3D" parent="World/Cube"]
-transform = Transform3D(-4.371139e-08, 0, 13.495, 0, 5.295, 0, -1, 0, -5.898852e-07, 0, 0, 7.604506)
+[node name="Wall2" type="MeshInstance3D" parent="World"]
+transform = Transform3D(-4.371139e-08, 0, 13.495, 0, 5.295, 0, -1, 0, -5.898852e-07, 2.3841858e-07, 3.166531, 9.258888)
 mesh = SubResource("BoxMesh_8gbba")
-skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_21xkr")
+
+[node name="Interactable" parent="." instance=ExtResource("6_21xkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.502354, 1.1365964, 0)
