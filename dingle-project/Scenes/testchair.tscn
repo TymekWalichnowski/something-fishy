@@ -1,28 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ydgxwu37il3"]
+[gd_scene load_steps=3 format=3 uid="uid://ydgxwu37il3"]
 
 [ext_resource type="PackedScene" uid="uid://bm7l3kh63edk5" path="res://Assets/Models/testchair.glb" id="1_npb0q"]
-[ext_resource type="Shader" uid="uid://c8oqmho2mey3h" path="res://Shaders/Toon.gdshader" id="2_2desc"]
-[ext_resource type="Texture2D" uid="uid://da0r6er785of5" path="res://Shaders/color_gradient.tres" id="3_1gc0b"]
-[ext_resource type="Texture2D" uid="uid://b812j18ke7gyl" path="res://Shaders/fresnel_gradient.tres" id="4_myl8c"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hjg7"]
-render_priority = 0
-shader = ExtResource("2_2desc")
-shader_parameter/albedo = Color(0, 0, 0, 1)
-shader_parameter/point_size = 0.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/normal_scale = 0.0
-shader_parameter/uv1_scale = Vector3(0, 0, 0)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(0, 0, 0)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/color_gradient = ExtResource("3_1gc0b")
-shader_parameter/fresnel_gradient = ExtResource("4_myl8c")
+[ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="2_vsan6"]
 
 [node name="testchair" instance=ExtResource("1_npb0q")]
 
 [node name="Cube" parent="." index="0"]
-material_overlay = SubResource("ShaderMaterial_2hjg7")
+surface_material_override/0 = ExtResource("2_vsan6")

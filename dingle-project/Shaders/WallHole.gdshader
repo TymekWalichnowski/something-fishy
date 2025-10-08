@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, cull_disabled, depth_draw_opaque, depth_prepass_alpha;
+render_mode blend_mix, depth_draw_opaque, depth_prepass_alpha;
 
 // The player's world position (set from script)
 uniform vec3 player_position;

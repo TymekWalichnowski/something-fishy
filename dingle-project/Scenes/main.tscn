@@ -37,15 +37,15 @@ use_collision = true
 size = Vector3(50, 0.1, 50)
 material = SubResource("StandardMaterial3D_bo1nx")
 
+[node name="testchair2" parent="." instance=ExtResource("4_kry3j")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1.3442931, 0.06900644, 2.7450073)
+
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179359, 1.05, 2.23403)
 script = ExtResource("2_bo1nx")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.779808, 0.626019, 0, -0.626019, 0.779808, -0.36952, 5.11195, 6.00096)
-
-[node name="testchair2" parent="Player" instance=ExtResource("4_kry3j")]
-transform = Transform3D(0.37, 0, 0, 0, 0.37, 0, 0, 0, 0.37, -1.3263572, -0.9809935, 0.51097727)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2555633, 0.98806465, 2.327432)
