@@ -3,9 +3,12 @@ render_mode blend_mix, depth_draw_opaque, depth_prepass_alpha;
 
 // The player's world position (set from script)
 uniform vec3 player_position;
+// hole should be seen
+uniform bool hole_visable;
 
 // Controls how strict the dissolve is
-uniform float alignment_threshold : hint_range(0.0, 1.0) = 0.98;
+uniform float alignment_max : hint_range(0.0, 1.0) = 0.98;
+uniform float hole_size : hint_range(0.0, 1.0);
 
 varying vec3 world_pos_vtx;
 
@@ -30,10 +33,13 @@ void fragment() {
     float alignment = dot(cam_to_player, cam_to_frag);
 
     // Should delete fragment
-    if (dist_camera_to_fragment < dist_camera_to_player && alignment > alignment_threshold) 
-	{
-        discard;
-    }
+	if (hole_visable)
+	{	
+		if (dist_camera_to_fragment < dist_camera_to_player && alignment > hole_size) 
+		{
+			discard;
+	    }	
+	}
 
     ALBEDO = vec3(1.0); // default wall color
 }

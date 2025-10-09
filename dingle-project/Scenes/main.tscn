@@ -5,9 +5,7 @@
 [ext_resource type="Script" uid="uid://cm02fvi1ywn3u" path="res://Scripts/WallShaderUpdater.cs" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://ydgxwu37il3" path="res://Scenes/testchair.tscn" id="4_kry3j"]
 [ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="5_21xkr"]
-[ext_resource type="Script" uid="uid://dde8f3urdmwou" path="res://Scripts/BaseNpc.cs" id="6_6bp64"]
-[ext_resource type="PackedScene" uid="uid://cbfhygpilytip" path="res://Scenes/interactable.tscn" id="6_21xkr"]
-[ext_resource type="Resource" uid="uid://c7thkvdanvm1d" path="res://Dialogue/Test.dialogue" id="7_344ge"]
+[ext_resource type="PackedScene" uid="uid://bif16dtoak0j" path="res://Scenes/base_npc.tscn" id="6_21xkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -24,9 +22,17 @@ tonemap_mode = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bo1nx"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Curve" id="Curve_21xkr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.272973, 0.6802299), 0.0, 0.0, 0, 0, Vector2(0.68648654, 0.16321838), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [sub_resource type="BoxMesh" id="BoxMesh_8gbba"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6bp64"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_21xkr"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6bp64"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="Main" type="Node3D"]
 
@@ -52,40 +58,50 @@ script = ExtResource("2_bo1nx")
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.779808, 0.626019, 0, -0.626019, 0.779808, -0.36952, 5.11195, 6.00096)
 
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2555633, 0.98806465, 2.327432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3981223, 0.98806465, 2.327432)
 light_color = Color(1, 0.39215687, 1, 1)
 light_size = 1.0
 light_specular = 1.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9174697, 0.98806465, 2.327432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.032055, 0.98806465, 2.327432)
 light_color = Color(0.26948076, 0.73195076, 0.99999994, 1)
 light_size = 1.0
 light_specular = 1.0
 
-[node name="World" type="Node3D" parent="." node_paths=PackedStringArray("Player")]
+[node name="World" type="Node3D" parent="." node_paths=PackedStringArray("player", "rayToPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6840224, 0, 0)
 script = ExtResource("4_21xkr")
-Player = NodePath("../Player")
+player = NodePath("../Player")
+rayToPlayer = NodePath("../Player/Camera3D/RayCast3D")
 SharedWallMaterial = ExtResource("5_21xkr")
+growRate = SubResource("Curve_21xkr")
+openSpeed = 0.001
+maxHoleSize = 0.9
 
 [node name="Wall" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, 2.3841858e-07, 3.166531, 1.6543821)
 mesh = SubResource("BoxMesh_8gbba")
 surface_material_override/0 = ExtResource("5_21xkr")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, 2.3841858e-07, 3.166531, 1.6543821)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_21xkr")
+
 [node name="Wall2" type="MeshInstance3D" parent="World"]
 transform = Transform3D(-4.371139e-08, 0, 13.495, 0, 5.295, 0, -1, 0, -5.898852e-07, 2.3841858e-07, 3.166531, 9.258888)
 mesh = SubResource("BoxMesh_8gbba")
 surface_material_override/0 = ExtResource("5_21xkr")
 
-[node name="BaseNpc" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9100833, 1.0554843, 0)
-mesh = SubResource("CapsuleMesh_6bp64")
-skeleton = NodePath("")
-script = ExtResource("6_6bp64")
-dialogue = ExtResource("7_344ge")
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall2"]
 
-[node name="Interactable" parent="BaseNpc" instance=ExtResource("6_21xkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19760466, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_6bp64")
+
+[node name="BaseNpc" parent="." instance=ExtResource("6_21xkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9100833, 1.0554843, 0)

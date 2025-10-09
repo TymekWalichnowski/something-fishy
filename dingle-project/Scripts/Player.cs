@@ -8,6 +8,11 @@ public partial class Player : CharacterBody3D
 
 	public static bool canMove = true;
 
+	public override void _Ready()
+	{
+		
+    }
+
 	public override void _PhysicsProcess(double delta)
 	{
 		if (canMove)
@@ -25,7 +30,7 @@ public partial class Player : CharacterBody3D
 
 	void Movement(double delta)
 	{
-		Vector3 velocity = Velocity; 
+		Vector3 velocity = Velocity;
 
 		// Add the gravity.
 		if (!IsOnFloor())
