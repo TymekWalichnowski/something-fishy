@@ -1,7 +1,18 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://flen3e3pr3e3"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://flen3e3pr3e3"]
 
-[ext_resource type="Shader" uid="uid://cvc55on2hi3u2" path="res://Shaders/WallHole.gdshader" id="1_w6gx3"]
+[ext_resource type="Shader" uid="uid://cvc55on2hi3u2" path="res://Shaders/WallHoleAndToon.gdshader" id="1_w6gx3"]
+[ext_resource type="Texture2D" uid="uid://da0r6er785of5" path="res://Shaders/color_gradient.tres" id="2_2joqg"]
+[ext_resource type="Texture2D" uid="uid://b812j18ke7gyl" path="res://Shaders/fresnel_gradient.tres" id="3_1crjc"]
+[ext_resource type="Texture2D" uid="uid://bfjn5h3wr84fv" path="res://wallTexture.jpg" id="4_1crjc"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_w6gx3")
+shader_parameter/player_position = Vector3(0, 0, 0)
+shader_parameter/hole_visable = false
+shader_parameter/alignment_max = 0.98
+shader_parameter/hole_size = 0.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("4_1crjc")
+shader_parameter/color_gradient = ExtResource("2_2joqg")
+shader_parameter/fresnel_gradient = ExtResource("3_1crjc")
