@@ -6,12 +6,8 @@ public partial class Player : CharacterBody3D
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
 
-	public static bool canMove = true;
-
-	public override void _Ready()
-	{
-		
-    }
+	private static bool canMove = true;
+	private static bool canInteract = true;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -22,10 +18,17 @@ public partial class Player : CharacterBody3D
 	}
 
 	// Can be used to freeze the player whenever wanted
-	public static void CanMove(bool t_canMove)
+	public static void ToggleMove(bool t_canMove = true)
 	{
 		canMove = t_canMove;
 	}
+	public static bool CanMove() {return canMove;}
+	// Stop player interactions with interact-key
+	public static void ToggleInteract(bool t_canInteract = true)
+	{
+		canInteract = t_canInteract;
+	}
+	public static bool CanInteract() {return canInteract;}
 
 
 	void Movement(double delta)

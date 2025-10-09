@@ -30,6 +30,7 @@ public partial class BaseNpc : Node3D
 	private void OnDialogueEnded(Resource resource)
 	{
 		GD.Print("Dialogue ended! Resource: " + resource);
-		Player.CanMove(true);
+		Player.ToggleMove(true);
+		Player.ToggleInteract(true);
 	}
 }

@@ -22,15 +22,15 @@ public partial class Interactable : Area3D
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("Interact"))
+		if (@event.IsActionPressed("Interact") && Player.CanInteract())
 		{
 			if (playerInside)
 			{
-				GD.Print("INTERACTED");
 				if (parent.HasMethod("Interact") || parent != null)
 				{
 					parent.Call("Interact");
-					Player.CanMove(false);
+					Player.ToggleMove(false);
+					Player.ToggleInteract(false);
 				}
 				else
 				{
