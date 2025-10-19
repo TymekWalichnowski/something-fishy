@@ -111,7 +111,7 @@ namespace DialogueManagerRuntime
 	public override void _UnhandledInput(InputEvent @event)
 	{
 	  // Only the balloon is allowed to handle input while it's showing
-	  GetViewport().SetInputAsHandled();
+	  //GetViewport().SetInputAsHandled();
 	}
 
 

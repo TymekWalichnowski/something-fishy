@@ -3,8 +3,13 @@ Character: [[Hi|Hello|Howdy]], this is some dialogue.
 Nathan: Here are some choices.
 - Gain Badge [if !Inventory.HasItem("Badge")]
 	Nathan: Here take a key! [do! DialogueInteractions.GiveBadge()]
+	
 - Show Evidence
-	Nathan: Ok, show me what you've got! [do! DialogueInteractions.ShowEvidence()]
+	Nathan: Ok, show me what you've got!  [do! DialogueInteractions.ShowEvidence()]
+	while DialogueInteractions.GetCurrentItemName() != "Badge"
+		You: That doesn't seem helpful right now
+	Nathan: I see you got a Badge... [do! DialogueInteractions.ClearEvidenceItem()]
+	
 - Go to place
 	Nathan: OK [wave] BYE BYE!! [/wave] [do! DialogueInteractions.intro_scene_1()]
 - Start again => start

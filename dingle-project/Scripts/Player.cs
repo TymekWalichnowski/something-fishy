@@ -15,12 +15,10 @@ public partial class Player : CharacterBody3D
 	{
 		if (walkTarget != null) // cutscene walking code if has target
 		{
-			GD.Print("cutscene movement");
 			WalkTowardsTarget((float)delta);
 		}
 		else if (canMove) // normal movement
 		{
-			GD.Print("normal movement");
 			Movement(delta);
 		}
 	}
