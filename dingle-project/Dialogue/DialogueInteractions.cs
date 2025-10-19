@@ -7,18 +7,20 @@ public partial class DialogueInteractions : Node
 	[Signal]
 	public delegate void WalkToEventHandler(Vector3 targetPosition);
 
+	public static InventoryUI inventoryUI;
+
 	// Items that can be given
-	InventoryItem keyItem;
+	InventoryItem badgeItem;
 
 	public override void _Ready()
 	{
 		// Load items
-		keyItem = GD.Load<InventoryItem>("res://Inventory/Badge.tres");
+		badgeItem = GD.Load<InventoryItem>("res://Inventory/Badge.tres");
 	}
 
-	public void GiveKey()
+	public void GiveBadge()
 	{
-		Inventory.AddItem(keyItem);
+		Inventory.AddItem(badgeItem);
 	}
 
 	public void intro_scene_1() // An Phiast heard the owner and walks over to the chip shop
@@ -27,4 +29,17 @@ public partial class DialogueInteractions : Node
 		Vector3 chipShopPosition = new Vector3(20, 0, 0);
 		EmitSignal(SignalName.WalkTo, chipShopPosition);
 	}
+
+	public static void ShowEvidence()
+	{
+		if (inventoryUI != null && GodotObject.IsInstanceValid(inventoryUI))
+		{
+			GD.Print("Open");
+			inventoryUI.OpenForEvidence();
+		}
+		else
+		{
+			GD.Print("Couldn't find inventory UI");
+		}
+    }
 }
