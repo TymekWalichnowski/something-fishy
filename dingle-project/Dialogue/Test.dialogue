@@ -1,6 +1,6 @@
 ~ start
 Character: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
+Nathan: Here are some choices. [do! DialogueInteractions.intro_scene_1()]
 - Gain Key
 	Nathan: Here take a key! [do! DialogueInteractions.GiveKey()]
 - Second one

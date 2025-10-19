@@ -8,10 +8,16 @@ public partial class Player : CharacterBody3D
 
 	private static bool canMove = true;
 	private static bool canInteract = true;
+	private Vector3? walkTarget = null;
+	
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (canMove)
+		if (walkTarget != null) // cutscene walking code if has target
+		{
+			WalkTowardsTarget((float)delta);
+		}
+		else if (canMove) // normal movement
 		{
 			Movement(delta);
 		}
@@ -58,5 +64,30 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+	
+	public void WalkTo(Vector3 target) //setting target and disabling movement
+	{
+		walkTarget = target;
+		canMove = false;
+	}
+	
+	private void WalkTowardsTarget(float delta) // walking towards target
+	{
+		Vector3 target = walkTarget.Value;
+		Vector3 direction = (target - GlobalTransform.Origin).Normalized();
+		float distance = GlobalTransform.Origin.DistanceTo(target);
+
+		if (distance > 0.1f)
+		{
+			Velocity = direction * Speed;
+			MoveAndSlide();
+		}
+		else
+		{
+			Velocity = Vector3.Zero;
+			walkTarget = null;
+			canMove = true;
+		}
 	}
 }
