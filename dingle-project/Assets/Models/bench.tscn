@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlaks0kw33vxx"]
+
+[ext_resource type="PackedScene" uid="uid://be78ttj8lh8ky" path="res://Assets/Models/bench.glb" id="1_skv3x"]
+
+[node name="bench" instance=ExtResource("1_skv3x")]
+
+[node name="Bench" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.009876251)
