@@ -9,8 +9,7 @@
 render_priority = 0
 shader = ExtResource("1_w6gx3")
 shader_parameter/player_position = Vector3(0, 0, 0)
-shader_parameter/hole_visable = false
-shader_parameter/alignment_max = 0.98
+shader_parameter/alignment_max = 0.0
 shader_parameter/hole_size = 0.0
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("4_1crjc")

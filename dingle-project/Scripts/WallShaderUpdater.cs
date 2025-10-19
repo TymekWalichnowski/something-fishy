@@ -36,7 +36,7 @@ public partial class WallShaderUpdater : Node3D
 			{
 				if (holeSize <= minHoleSize)
 				{
-					holeSize += 0.01f;
+					holeSize += 0.1f;
 				}
 				else
 				{
@@ -46,7 +46,7 @@ public partial class WallShaderUpdater : Node3D
 			else if (holeSize > maxHoleSize)
 			{
 				holeOn = true;
-				holeSize -= 0.001f;
+				holeSize -= 0.01f;
 			}
 
 			// Handle which is the newest hit

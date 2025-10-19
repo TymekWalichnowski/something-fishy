@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c5o4183752jnw"]
+
+[ext_resource type="Texture2D" uid="uid://cw4sfuqut8olb" path="res://icon.svg" id="1_73d05"]
+[ext_resource type="Script" uid="uid://dxw6ssn0avxd3" path="res://Scripts/UI/InventoryItem.cs" id="1_uj27t"]
+
+[resource]
+script = ExtResource("1_uj27t")
+Name = "Badge"
+Texture = ExtResource("1_73d05")
+metadata/_custom_type_script = "uid://dxw6ssn0avxd3"
