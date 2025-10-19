@@ -46,8 +46,11 @@ public partial class InventoryUI : Control
 		isOpen = true;
 
 		for (int i = 0; i < Inventory.MAX_SIZE; i++)
-        {
-			slots[i].UpdatePanel(Inventory.GetItemAtIndex(i));
+		{
+			if (i < Inventory.GetSize())
+            {
+             	slots[i].UpdatePanel(Inventory.GetItemAtIndex(i));   
+            }
         }
 	}
 	
