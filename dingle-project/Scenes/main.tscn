@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=16 format=3 uid="uid://gxolafe3yyrs"]
 
+[ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://jh0kdbt45p46" path="res://Scripts/Player.cs" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://77vl28sgmlbd" path="res://Scenes/UI/inventory.tscn" id="3_6bp64"]
@@ -32,6 +33,7 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_344ge")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
