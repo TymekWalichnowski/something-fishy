@@ -7,6 +7,9 @@ class_name DialogueResponsesMenu extends Container
 ## Emitted when a response is selected.
 signal response_selected(response)
 
+## Emitted when hovered over a choice
+signal response_hovered
+
 
 ## Optionally specify a control to duplicate for each response
 @export var response_template: Control
@@ -16,6 +19,8 @@ signal response_selected(response)
 
 ## Hide any responses where [code]is_allowed[/code] is false
 @export var hide_failed_responses: bool = false
+
+var balloon_style := preload("res://Dialogue/BalloonText.tres")
 
 ## The list of dialogue responses.
 var responses: Array = []:
@@ -43,6 +48,12 @@ var responses: Array = []:
 				else:
 					item = Button.new()
 				item.name = "Response%d" % get_child_count()
+				
+				# Custom Tymek code, changing it to fit the theme
+				item.theme = balloon_style
+				item.set_text_alignment(0)
+				item.add_theme_color_override("font_color", Color.BLACK)
+				
 				if not response.is_allowed:
 					item.name = item.name + &"Disallowed"
 					item.disabled = true
@@ -129,9 +140,8 @@ func _configure_focus() -> void:
 
 func _on_response_mouse_entered(item: Control) -> void:
 	if "Disallowed" in item.name: return
-
 	item.grab_focus()
-
+	emit_signal("response_hovered")
 
 func _on_response_gui_input(event: InputEvent, item: Control, response) -> void:
 	if "Disallowed" in item.name: return
