@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnht7rh54wui5"]
+
+[ext_resource type="Texture2D" uid="uid://c1iqxf0dqm0ct" path="res://Assets/Textures/Characters/Concept_Chipper.png" id="1_y376v"]
+[ext_resource type="Script" uid="uid://dc7oarqr3hoep" path="res://Scripts/NPCS/Chipper_Intro.cs" id="2_7lpe3"]
+[ext_resource type="Resource" uid="uid://bix4iu88ma5h4" path="res://Dialogue/NPCS/ChipperIntro.dialogue" id="3_4vrcs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7lpe3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y376v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ChipperIntro" type="AnimatedSprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.080137, 0)
+sprite_frames = SubResource("SpriteFrames_7lpe3")
+script = ExtResource("2_7lpe3")
+dialogue = ExtResource("3_4vrcs")
