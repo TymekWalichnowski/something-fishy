@@ -41,5 +41,5 @@ public partial class DialogueInteractions : Node
 		{
 			GD.Print("Couldn't find inventory UI");
 		}
-    }
+	}
 }
