@@ -15,10 +15,12 @@ public partial class Player : CharacterBody3D
 	{
 		if (walkTarget != null) // cutscene walking code if has target
 		{
+			GD.Print("cutscene movement");
 			WalkTowardsTarget((float)delta);
 		}
 		else if (canMove) // normal movement
 		{
+			GD.Print("normal movement");
 			Movement(delta);
 		}
 	}
@@ -71,23 +73,27 @@ public partial class Player : CharacterBody3D
 		walkTarget = target;
 		canMove = false;
 	}
-	
-	private void WalkTowardsTarget(float delta) // walking towards target
+	private void WalkTowardsTarget(float delta)
 	{
-		Vector3 target = walkTarget.Value;
-		Vector3 direction = (target - GlobalTransform.Origin).Normalized();
-		float distance = GlobalTransform.Origin.DistanceTo(target);
+	Vector3 target = walkTarget.Value;
+	Vector3 toTarget = target - GlobalTransform.Origin;
+	float distance = toTarget.Length();
 
-		if (distance > 0.1f)
-		{
-			Velocity = direction * Speed;
-			MoveAndSlide();
-		}
-		else
-		{
-			Velocity = Vector3.Zero;
-			walkTarget = null;
-			canMove = true;
-		}
+	if (distance > 3.0f) // This won't get you exactly there, but close enough
+	{
+		Vector3 direction = toTarget.Normalized();
+		Vector3 velocity = direction * Speed;
+
+		velocity.Y = Velocity.Y;
+		Velocity = velocity;
+
+		MoveAndSlide();
 	}
+	else
+	{
+		GD.Print("Arrived at target");
+		Velocity = Vector3.Zero;
+		walkTarget = null;
+	}
+}
 }
