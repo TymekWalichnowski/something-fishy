@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=20 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://jh0kdbt45p46" path="res://Scripts/Player.cs" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://btpsvwbotasdq" path="res://Scenes/pause_menu.tscn" id="2_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://77vl28sgmlbd" path="res://Scenes/UI/inventory.tscn" id="3_6bp64"]
 [ext_resource type="Script" uid="uid://cm02fvi1ywn3u" path="res://Scripts/WallShaderUpdater.cs" id="4_21xkr"]
 [ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="5_21xkr"]
@@ -39,6 +40,11 @@ size = Vector3(10.605, 11.975, 72.38)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_344ge")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_d1ilt")]
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
