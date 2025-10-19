@@ -54,7 +54,7 @@ size = Vector3(150, 0.1, 80)
 material = SubResource("StandardMaterial3D_bo1nx")
 
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.023074, 1.05, -2.34846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8834143, 1.05, -2.34846)
 script = ExtResource("2_bo1nx")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
