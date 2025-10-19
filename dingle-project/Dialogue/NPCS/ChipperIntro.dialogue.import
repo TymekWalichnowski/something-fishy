@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bix4iu88ma5h4"
+path="res://.godot/imported/ChipperIntro.dialogue-e13f3fe60f09dfdb7ba0f3e3acf17c24.tres"
+
+[deps]
+
+source_file="res://Dialogue/NPCS/ChipperIntro.dialogue"
+dest_files=["res://.godot/imported/ChipperIntro.dialogue-e13f3fe60f09dfdb7ba0f3e3acf17c24.tres"]
+
+[params]
+
+defaults=true

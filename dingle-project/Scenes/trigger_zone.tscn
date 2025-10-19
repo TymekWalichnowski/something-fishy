@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4onvdc5phtp8"]
+
+[ext_resource type="Script" uid="uid://bjobunxb0k3ki" path="res://Scripts/TriggerZone.cs" id="1_wliti"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynf5e"]
+
+[node name="TriggerZone" type="Area3D"]
+script = ExtResource("1_wliti")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ynf5e")

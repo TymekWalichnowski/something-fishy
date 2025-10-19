@@ -1,10 +1,12 @@
 ~ start
 Character: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices. [do! DialogueInteractions.intro_scene_1()]
-- Gain Key
-	Nathan: Here take a key! [do! DialogueInteractions.GiveKey()]
-- Second one
-	Nathan: You picked the second one.
+Nathan: Here are some choices.
+- Gain Badge [if !Inventory.HasItem("Badge")]
+	Nathan: Here take a key! [do! DialogueInteractions.GiveBadge()]
+- Show Evidence
+	Nathan: Ok, show me what you've got! [do! DialogueInteractions.ShowEvidence()]
+- Go to place
+	Nathan: OK [wave] BYE BYE!! [/wave] [do! DialogueInteractions.intro_scene_1()]
 - Start again => start
 - End the conversation => END
 Nathan: For more information see the online documentation. [br] Blallblalblalblalablallbalab [br] Blalls

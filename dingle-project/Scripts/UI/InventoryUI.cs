@@ -10,6 +10,9 @@ public partial class InventoryUI : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// Give this to DialogueInteractions
+		DialogueInteractions.inventoryUI = this;
+
 		// Get the GridContainer
         GridContainer grid = GetNode<GridContainer>("NinePatchRect/GridContainer");
 
@@ -46,10 +49,21 @@ public partial class InventoryUI : Control
 		isOpen = true;
 
 		for (int i = 0; i < Inventory.MAX_SIZE; i++)
-        {
-			slots[i].UpdatePanel(Inventory.GetItemAtIndex(i));
-        }
+		{
+			if (i < Inventory.GetSize())
+			{
+				slots[i].UpdatePanel(Inventory.GetItemAtIndex(i));
+			}
+		}
 	}
+	
+	public void OpenForEvidence()
+	{
+		Open();
+		GD.Print("Await for option selected");
+		// Selections logic
+		GD.Print("On selection return selected Item");
+    }
 	
 	public void Close()
     {

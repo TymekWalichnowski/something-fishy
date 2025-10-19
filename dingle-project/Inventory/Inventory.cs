@@ -8,15 +8,14 @@ public partial class Inventory : Node
 	static Array<InventoryItem> inventory = new Array<InventoryItem>();
 	public const int MAX_SIZE = 16;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-
-	}
-
 	public static InventoryItem GetItemAtIndex(int i)
-    {
+	{
 		return inventory[i];
+	}
+	
+	public static int GetSize()
+    {
+		return inventory.Count;
     }
 
 	public static bool HasItem(string t_name)
@@ -32,7 +31,7 @@ public partial class Inventory : Node
 		return false;
 	}
 
-	public void AddItem(InventoryItem t_newItem)
+	public static void AddItem(InventoryItem t_newItem)
 	{
 		if (inventory.Count < MAX_SIZE)
         {

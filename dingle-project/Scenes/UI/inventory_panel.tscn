@@ -1,11 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://cyxc421g7xxme"]
 
-[ext_resource type="Script" uid="uid://bqbuvu1oere37" path="res://Scenes/UI/InventorySlot.cs" id="1_jah84"]
+[ext_resource type="Script" uid="uid://8wtp5bfhg8nl" path="res://Scripts/UI/InventorySlot.cs" id="1_jah84"]
 
 [node name="InventoryPanel" type="Panel"]
 custom_minimum_size = Vector2(40, 40)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 100.0
+offset_bottom = 100.0
 script = ExtResource("1_jah84")
 
 [node name="Item Display" type="Sprite2D" parent="."]
+centered = false
