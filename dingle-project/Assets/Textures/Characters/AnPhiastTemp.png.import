@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1iqxf0dqm0ct"
-path.s3tc="res://.godot/imported/Concept_Chipper.png-7492b46abcc03536cb49d789df160014.s3tc.ctex"
+uid="uid://buy5b0at0neyv"
+path.s3tc="res://.godot/imported/AnPhiastTemp.png-8ed9b248debc415b24142e76de4e3a29.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Characters/Concept_Chipper.png"
-dest_files=["res://.godot/imported/Concept_Chipper.png-7492b46abcc03536cb49d789df160014.s3tc.ctex"]
+source_file="res://Assets/Textures/Characters/AnPhiastTemp.png"
+dest_files=["res://.godot/imported/AnPhiastTemp.png-8ed9b248debc415b24142e76de4e3a29.s3tc.ctex"]
 
 [params]
 
