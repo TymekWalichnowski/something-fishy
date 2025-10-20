@@ -66,13 +66,13 @@ size = Vector3(150, 0.1, 80)
 material = SubResource("StandardMaterial3D_bo1nx")
 
 [node name="Player" parent="." groups=["CutsceneObjects"] instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.893726, 1.05, -2.34846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
 script = ExtResource("2_bo1nx")
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.9819785, 0.18899286, 0, -0.18899286, 0.9819785, -0.36952, 2.5589044, 5.2060614)
+[node name="Camera" type="Camera3D" parent="Player" groups=["CutsceneObjects"]]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, -0.4, 2.6, 5.25)
 
-[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.181223, 1.1758446, 10.082755)
@@ -181,9 +181,6 @@ surface_material_override/0 = ExtResource("5_21xkr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall6/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_6bp64")
 
-[node name="BaseNpc" parent="." instance=ExtResource("6_21xkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.01805, 1.0554843, -5.2736335)
-
 [node name="bench" parent="." instance=ExtResource("6_6bp64")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.17563, 0.05114548, -5.3715143)
 
@@ -196,18 +193,18 @@ offset_bottom = 399.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="ChipperIntro" parent="." instance=ExtResource("9_ynf5e")]
-transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -0.7222142, 1.8095293, -4.88525)
+[node name="ChipperGuy" parent="." groups=["CutscenePositions"] instance=ExtResource("9_ynf5e")]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 37.813454, 1.8095293, -4.88525)
 
-[node name="TriggerZone" type="Area3D" parent="ChipperIntro"]
+[node name="TriggerZone" type="Area3D" parent="ChipperGuy"]
 script = ExtResource("10_hptm8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChipperIntro/TriggerZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChipperGuy/TriggerZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.788927, 0, 23.222576)
 shape = SubResource("BoxShape3D_d1ilt")
 
 [node name="Chipper" type="Node3D" parent="." groups=["CutscenePositions"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.42249, 1.2771826, -2.9813967)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.328966, 1.05, -2.2798724)
 
 [node name="ChipperCutscene" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.911386, 0, 0)
@@ -219,3 +216,6 @@ dialogue = ExtResource("13_jkdf5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChipperCutscene/CutsceneTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25830078, 3.2216797, 1.1661987)
 shape = SubResource("BoxShape3D_6iyac")
+
+[node name="Guy" parent="." groups=["CutsceneObjects"] instance=ExtResource("6_21xkr")]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 1.416214, 1.9738612, -4.6969433)

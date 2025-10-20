@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://k0lhkkcqp3rr"
-path="res://.godot/imported/Building_Chippy.blend-9b08a6434bb0af341a09f51cab661309.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Building_Chippy.blend"
-dest_files=["res://.godot/imported/Building_Chippy.blend-9b08a6434bb0af341a09f51cab661309.scn"]
 
 [params]
 

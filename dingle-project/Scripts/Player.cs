@@ -9,7 +9,18 @@ public partial class Player : CharacterBody3D
 	private static bool canMove = true;
 	private static bool canInteract = true;
 	private Vector3? walkTarget = null;
-	
+
+	// Camera Data
+	Node3D camera;
+	Transform3D originalCameraTransform;
+
+    public override void _Ready()
+    {
+		camera = GetNode<Node3D>("Camera");
+
+		originalCameraTransform = camera.Transform;
+    }
+
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -95,4 +106,11 @@ public partial class Player : CharacterBody3D
 			walkTarget = null;
 		}
 	}
+
+	public void ResetCameraTween(float t_timeTaken)
+    {
+        var tween = GetTree().CreateTween();
+        // Tween back to the cached transform (position + rotation + scale)
+        tween.TweenProperty(camera, "transform", originalCameraTransform, t_timeTaken);
+    }
 }

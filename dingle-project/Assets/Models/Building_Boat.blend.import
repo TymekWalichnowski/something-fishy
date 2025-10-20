@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://2x6wmuveorid"
-path="res://.godot/imported/Building_Boat.blend-a040a69ec87b6ef30070e8d0a5106584.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Building_Boat.blend"
-dest_files=["res://.godot/imported/Building_Boat.blend-a040a69ec87b6ef30070e8d0a5106584.scn"]
 
 [params]
 

@@ -17,6 +17,7 @@ animations = [{
 
 [node name="ChipperIntro" type="AnimatedSprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.080137, 0)
+billboard = 1
 sprite_frames = SubResource("SpriteFrames_7lpe3")
 script = ExtResource("2_7lpe3")
 dialogue = ExtResource("3_4vrcs")

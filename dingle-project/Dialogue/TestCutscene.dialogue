@@ -1,6 +1,14 @@
 ~ start
 Nathan: Go over there. 
 do CutsceneManager.MoveToTarget("Player", "Chipper", 1.0)
+do wait(0.5)
+Nathan: I'll go with you.
+do CutsceneManager.MoveToTarget("Guy", "Chipper", 1.0)
 do wait(1.0)
-Nathan: there he goes.
+Nathan: [wave]LOOK!!![/wave] [do! CutsceneManager.LookAt("Camera", "ChipperGuy", 0.5)]
+do wait(1.0)
+Nathan: Look at that fucker......
+do CutsceneManager.ResetCameraTween(1.0)
+do wait(0.5)
+Nathan: Let's kill him...
 => END

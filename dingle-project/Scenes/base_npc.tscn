@@ -1,20 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://bif16dtoak0j"]
+[gd_scene load_steps=6 format=3 uid="uid://bif16dtoak0j"]
 
-[ext_resource type="Material" uid="uid://h8uhi55qwedq" path="res://Shaders/ToonMaterial.tres" id="1_duayq"]
 [ext_resource type="Script" uid="uid://dde8f3urdmwou" path="res://Scripts/BaseNpc.cs" id="1_n8v3c"]
+[ext_resource type="Texture2D" uid="uid://c1iqxf0dqm0ct" path="res://Assets/Textures/Characters/Concept_Chipper.png" id="2_dq44t"]
 [ext_resource type="Resource" uid="uid://c7thkvdanvm1d" path="res://Dialogue/Test.dialogue" id="2_duayq"]
 [ext_resource type="PackedScene" uid="uid://cbfhygpilytip" path="res://Scenes/interactable.tscn" id="3_dq44t"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dq44t"]
-albedo_color = Color(0, 0.23529412, 1, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_6h7vh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dq44t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6bp64"]
-
-[node name="BaseNpc" type="MeshInstance3D"]
-material_override = SubResource("StandardMaterial3D_dq44t")
-material_overlay = ExtResource("1_duayq")
-mesh = SubResource("CapsuleMesh_6bp64")
-skeleton = NodePath("")
+[node name="BaseNpc" type="AnimatedSprite3D"]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 1.923861, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_6h7vh")
 script = ExtResource("1_n8v3c")
 dialogue = ExtResource("2_duayq")
 
