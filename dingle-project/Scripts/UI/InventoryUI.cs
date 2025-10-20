@@ -14,7 +14,7 @@ public partial class InventoryUI : Control
 		DialogueInteractions.inventoryUI = this;
 
 		// Get the GridContainer
-        GridContainer grid = GetNode<GridContainer>("NinePatchRect/GridContainer");
+		GridContainer grid = GetNode<GridContainer>("NinePatchRect/GridContainer");
 
 		// Loop through all children of the GridContainer
 		foreach (Node child in grid.GetChildren())
@@ -36,10 +36,10 @@ public partial class InventoryUI : Control
 			{
 				Close();
 			}
-            else
-            {  
+			else
+			{  
 				Open();
-            }
+			}
 		}
 	}
 
@@ -63,11 +63,11 @@ public partial class InventoryUI : Control
 		GD.Print("Await for option selected");
 		// Selections logic
 		GD.Print("On selection return selected Item");
-    }
+	}
 	
 	public void Close()
-    {
+	{
 		Visible = false;
 		isOpen = false;
-    }
+	}
 }
