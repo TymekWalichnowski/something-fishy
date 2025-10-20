@@ -1,7 +1,6 @@
 extends Node3D
 
 @onready var pause_menu = $CanvasLayer/PauseMenu
-@onready var chipper_cutscene = $ChipperCutscene 
 var paused = false
 
 func _ready() -> void:
@@ -11,10 +10,6 @@ func _ready() -> void:
 	# Connect to Dialogue Manager events (from your autoload)
 	if Engine.has_singleton("DialogueInteractions"):
 		DialogueInteractions.WalkTo.connect(_on_walk_to)
-
-	# Make the cutscene accessible to DialogueManager
-	# This is the key line that exposes "ChipperCutscene" to dialogue scripts
-	set("ChipperCutscene", chipper_cutscene)
 
 
 func _process(delta: float) -> void:

@@ -42,7 +42,7 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 size = Vector3(10.605, 11.975, 72.38)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6iyac"]
-size = Vector3(1, 7.4433594, 16.849976)
+size = Vector3(0.48339844, 7.4433594, 16.849976)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_344ge")
@@ -65,8 +65,8 @@ use_collision = true
 size = Vector3(150, 0.1, 80)
 material = SubResource("StandardMaterial3D_bo1nx")
 
-[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8834143, 1.05, -2.34846)
+[node name="Player" parent="." groups=["CutsceneObjects"] instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.893726, 1.05, -2.34846)
 script = ExtResource("2_bo1nx")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
@@ -86,14 +86,10 @@ light_color = Color(0.26948076, 0.73195076, 0.99999994, 1)
 light_size = 1.0
 light_specular = 1.0
 
-[node name="World" type="Node3D" parent="." node_paths=PackedStringArray("player", "rayToPlayer")]
+[node name="World" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6840224, 0, 0)
 script = ExtResource("4_21xkr")
-player = NodePath("../Player")
-rayToPlayer = NodePath("../Player/Camera3D/RayCast3D")
 SharedWallMaterial = ExtResource("5_21xkr")
-maxHoleSize = 0.5
-minHoleSize = 0.55
 
 [node name="Wall" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, -21.03348, 2.5974426, 0.6040968)
@@ -210,22 +206,16 @@ script = ExtResource("10_hptm8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.788927, 0, 23.222576)
 shape = SubResource("BoxShape3D_d1ilt")
 
-[node name="ChipperCutscene" type="Node" parent="." node_paths=PackedStringArray("gameObjects", "positions")]
+[node name="Chipper" type="Node3D" parent="." groups=["CutscenePositions"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.42249, 1.2771826, -2.9813967)
+
+[node name="ChipperCutscene" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.911386, 0, 0)
 script = ExtResource("12_fdnlq")
 dialogue = ExtResource("13_jkdf5")
-gameObjects = {
-"player": NodePath("../Player")
-}
-positions = {
-"chipper": NodePath("Chipper")
-}
 
 [node name="CutsceneTrigger" parent="ChipperCutscene" instance=ExtResource("12_6iyac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.367512, 0.04999733, -1.4151764)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChipperCutscene/CutsceneTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2216797, 1.1661987)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25830078, 3.2216797, 1.1661987)
 shape = SubResource("BoxShape3D_6iyac")
-
-[node name="Chipper" type="Node3D" parent="ChipperCutscene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.511105, 0, -2.9813967)
