@@ -1,3 +1,6 @@
 ~ start
-Nathan: Go over there. [do! Main.ChipperCutscene.MoveToTarget("player", "chipper")]
+Nathan: Go over there. 
+do CutsceneManager.MoveToTarget("Player", "Chipper", 1.0)
+do wait(1.0)
+Nathan: there he goes.
 => END

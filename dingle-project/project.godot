@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DialogueInteractions="*res://Dialogue/DialogueInteractions.cs"
 Inventory="*res://Inventory/Inventory.cs"
+CutsceneManager="*res://Scripts/CutsceneManager.cs"
 
 [dialogue_manager]
 
@@ -33,6 +34,11 @@ project/assembly_name="Dingle-Project"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[global_group]
+
+CutscenePositions="Positions that can be accessed from the cutscene manager"
+CutsceneObjects="Objects that can be accessed within the Cutsene manager"
 
 [input]
 
