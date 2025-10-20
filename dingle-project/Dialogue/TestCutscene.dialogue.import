@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bfockbj0pmouy"
+path="res://.godot/imported/TestCutscene.dialogue-466f90747e8e46104b10212f459eac20.tres"
+
+[deps]
+
+source_file="res://Dialogue/TestCutscene.dialogue"
+dest_files=["res://.godot/imported/TestCutscene.dialogue-466f90747e8e46104b10212f459eac20.tres"]
+
+[params]
+
+defaults=true

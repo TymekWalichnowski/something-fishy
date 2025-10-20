@@ -13,13 +13,13 @@ public partial class Player : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (walkTarget != null) // cutscene walking code if has target
-		{
-			WalkTowardsTarget((float)delta);
-		}
-		else if (canMove) // normal movement
+		if (canMove) // normal movement
 		{
 			Movement(delta);
+		}
+		else if (walkTarget != null) // cutscene walking code if has target
+		{
+			WalkTowardsTarget((float)delta);
 		}
 	}
 
@@ -28,7 +28,8 @@ public partial class Player : CharacterBody3D
 	{
 		canMove = t_canMove;
 	}
-	public static bool CanMove() {return canMove;}
+	public static bool CanMove() { return canMove; }
+	
 	// Stop player interactions with interact-key
 	public static void ToggleInteract(bool t_canInteract = true)
 	{
@@ -66,32 +67,32 @@ public partial class Player : CharacterBody3D
 		MoveAndSlide();
 	}
 	
-	public void WalkTo(Vector3 target) //setting target and disabling movement
+	public void WalkTo(Vector3 target) // Setting target and disabling movement
 	{
 		walkTarget = target;
 		canMove = false;
 	}
 	private void WalkTowardsTarget(float delta)
 	{
-	Vector3 target = walkTarget.Value;
-	Vector3 toTarget = target - GlobalTransform.Origin;
-	float distance = toTarget.Length();
+		Vector3 target = walkTarget.Value;
+		Vector3 toTarget = target - GlobalTransform.Origin;
+		float distance = toTarget.Length();
 
-	if (distance > 3.0f) // This won't get you exactly there, but close enough
-	{
-		Vector3 direction = toTarget.Normalized();
-		Vector3 velocity = direction * Speed;
+		if (distance > 3.0f) // This won't get you exactly there, but close enough
+		{
+			Vector3 direction = toTarget.Normalized();
+			Vector3 velocity = direction * Speed;
 
-		velocity.Y = Velocity.Y;
-		Velocity = velocity;
+			velocity.Y = Velocity.Y;
+			Velocity = velocity;
 
-		MoveAndSlide();
+			MoveAndSlide();
+		}
+		else
+		{
+			GD.Print("Arrived at target");
+			Velocity = Vector3.Zero;
+			walkTarget = null;
+		}
 	}
-	else
-	{
-		GD.Print("Arrived at target");
-		Velocity = Vector3.Zero;
-		walkTarget = null;
-	}
-}
 }

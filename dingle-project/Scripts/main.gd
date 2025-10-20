@@ -1,34 +1,38 @@
 extends Node3D
 
 @onready var pause_menu = $CanvasLayer/PauseMenu
+@onready var chipper_cutscene = $ChipperCutscene 
 var paused = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Wait for the C# autoload to be ready
+	# Wait for C# autoloads to be ready
 	await get_tree().process_frame
-	DialogueInteractions.WalkTo.connect(_on_walk_to)
+	
+	# Connect to Dialogue Manager events (from your autoload)
+	if Engine.has_singleton("DialogueInteractions"):
+		DialogueInteractions.WalkTo.connect(_on_walk_to)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	# Make the cutscene accessible to DialogueManager
+	# This is the key line that exposes "ChipperCutscene" to dialogue scripts
+	set("ChipperCutscene", chipper_cutscene)
+
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
-		pauseMenu()
+		pause_menu_toggle()
 
-func _on_walk_to(target_position: Vector3):
+
+func _on_walk_to(target_position: Vector3) -> void:
 	print("Got target position")
 	print("Player walking to: ", target_position)
-	$Player.WalkTo(target_position) 
+	$Player.WalkTo(target_position)
 
-func pauseMenu():
+
+func pause_menu_toggle() -> void:
 	if paused:
-		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		pause_menu.hide()
 		get_tree().paused = false
-		#$Player.ToggleMove(true)
 	else:
-		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		pause_menu.show()
 		get_tree().paused = true
-		#$Player.ToggleMove(false)
-		
 	paused = !paused

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=24 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bif16dtoak0j" path="res://Scenes/base_npc.tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://cnht7rh54wui5" path="res://Scenes/NPCS/Chipper_Intro.tscn" id="9_ynf5e"]
 [ext_resource type="Script" uid="uid://bjobunxb0k3ki" path="res://Scripts/TriggerZone.cs" id="10_hptm8"]
+[ext_resource type="PackedScene" uid="uid://dnawa80lg0afn" path="res://Scenes/CutsceneTrigger.tscn" id="12_6iyac"]
+[ext_resource type="Script" uid="uid://dyy3h427yh0ux" path="res://Scripts/Cutscene.cs" id="12_fdnlq"]
+[ext_resource type="Resource" uid="uid://bfockbj0pmouy" path="res://Dialogue/TestCutscene.dialogue" id="13_jkdf5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -37,6 +40,9 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1ilt"]
 size = Vector3(10.605, 11.975, 72.38)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6iyac"]
+size = Vector3(1, 7.4433594, 16.849976)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_344ge")
@@ -203,4 +209,23 @@ script = ExtResource("10_hptm8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChipperIntro/TriggerZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.788927, 0, 23.222576)
 shape = SubResource("BoxShape3D_d1ilt")
-mouse_filter = 1
+
+[node name="ChipperCutscene" type="Node" parent="." node_paths=PackedStringArray("gameObjects", "positions")]
+script = ExtResource("12_fdnlq")
+dialogue = ExtResource("13_jkdf5")
+gameObjects = {
+"player": NodePath("../Player")
+}
+positions = {
+"chipper": NodePath("Chipper")
+}
+
+[node name="CutsceneTrigger" parent="ChipperCutscene" instance=ExtResource("12_6iyac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.367512, 0.04999733, -1.4151764)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChipperCutscene/CutsceneTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2216797, 1.1661987)
+shape = SubResource("BoxShape3D_6iyac")
+
+[node name="Chipper" type="Node3D" parent="ChipperCutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.511105, 0, -2.9813967)

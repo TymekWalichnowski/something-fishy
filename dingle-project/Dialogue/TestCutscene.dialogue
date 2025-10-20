@@ -1,0 +1,3 @@
+~ start
+Nathan: Go over there. [do! Main.ChipperCutscene.MoveToTarget("player", "chipper")]
+=> END
