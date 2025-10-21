@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbfhygpilytip"]
+[gd_scene load_steps=5 format=3 uid="uid://cbfhygpilytip"]
 
 [ext_resource type="Script" uid="uid://bl6g7unp7l7q" path="res://Scripts/Interactable.cs" id="1_8s6bd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8s6bd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmsje"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.09803922)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_344ge"]
 size = Vector3(2.9926758, 0.78356934, 3.0136719)
 
 [node name="Interactable" type="Area3D"]
 script = ExtResource("1_8s6bd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.97, 0, 0, 0, 2.97, 0, 0, 0, 2.97, 0.092041016, 0.04510498, -0.123168945)
+mesh = SubResource("BoxMesh_8s6bd")
+skeleton = NodePath("../CollisionShape3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_pmsje")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.092041016, 0.04510498, -0.123168945)

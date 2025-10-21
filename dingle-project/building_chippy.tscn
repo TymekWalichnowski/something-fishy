@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b87thssdf5ryp"]
+
+[ext_resource type="PackedScene" uid="uid://cjim5dsiowrpf" path="res://Assets/Models/building_chippy.glb" id="1_2y0c8"]
+[ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="2_tg24i"]
+
+[node name="building_chippy" instance=ExtResource("1_2y0c8")]
+
+[node name="Shop" parent="." index="0"]
+material_override = ExtResource("2_tg24i")

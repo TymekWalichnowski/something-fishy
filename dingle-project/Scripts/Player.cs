@@ -14,11 +14,15 @@ public partial class Player : CharacterBody3D
 	Node3D camera;
 	Transform3D originalCameraTransform;
 
+	static Sprite3D interactIcon;
+
     public override void _Ready()
     {
 		camera = GetNode<Node3D>("Camera");
-
 		originalCameraTransform = camera.Transform;
+
+		interactIcon = GetNode<Sprite3D>("InteractIcon");
+		HideInteract();
     }
 
 
@@ -77,6 +81,15 @@ public partial class Player : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+
+	public static void ShowInteract()
+	{
+		interactIcon.Visible = true;
+	}
+	public static void HideInteract()
+    {
+        interactIcon.Visible = false;
+    }
 	
 	public void WalkTo(Vector3 target) // Setting target and disabling movement
 	{

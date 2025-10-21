@@ -31,6 +31,8 @@ public partial class Interactable : Area3D
 					parent.Call("Interact");
 					Player.ToggleMove(false);
 					Player.ToggleInteract(false);
+
+					Player.HideInteract();
 				}
 				else
 				{
@@ -46,6 +48,8 @@ public partial class Interactable : Area3D
 		{
 			GD.Print("Enter");
 			playerInside = true;
+
+			Player.ShowInteract();
 		}
 	}
 
@@ -55,6 +59,8 @@ public partial class Interactable : Area3D
 		{
 			GD.Print("Exit");
 			playerInside = false;
+
+			Player.HideInteract();
 		}
 	}
 }

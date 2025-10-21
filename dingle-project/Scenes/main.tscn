@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=25 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -7,13 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://77vl28sgmlbd" path="res://Scenes/UI/inventory.tscn" id="3_6bp64"]
 [ext_resource type="Script" uid="uid://cm02fvi1ywn3u" path="res://Scripts/WallShaderUpdater.cs" id="4_21xkr"]
 [ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="5_21xkr"]
-[ext_resource type="PackedScene" uid="uid://dlaks0kw33vxx" path="res://Assets/Models/bench.tscn" id="6_6bp64"]
+[ext_resource type="Texture2D" uid="uid://bf30b52oyut6p" path="res://Assets/Textures/UI/ui_key.png" id="5_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://bif16dtoak0j" path="res://Scenes/base_npc.tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://cnht7rh54wui5" path="res://Scenes/NPCS/Chipper_Intro.tscn" id="9_ynf5e"]
 [ext_resource type="Script" uid="uid://bjobunxb0k3ki" path="res://Scripts/TriggerZone.cs" id="10_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dnawa80lg0afn" path="res://Scenes/CutsceneTrigger.tscn" id="12_6iyac"]
 [ext_resource type="Script" uid="uid://dyy3h427yh0ux" path="res://Scripts/Cutscene.cs" id="12_fdnlq"]
 [ext_resource type="Resource" uid="uid://bfockbj0pmouy" path="res://Dialogue/TestCutscene.dialogue" id="13_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://cjim5dsiowrpf" path="res://Assets/Models/building_chippy.glb" id="14_jkdf5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -27,16 +28,17 @@ background_mode = 2
 sky = SubResource("Sky_bo1nx")
 tonemap_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bo1nx"]
-albedo_color = Color(0, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdnlq"]
+albedo_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_8gbba"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkdf5"]
+albedo_color = Color(1, 1, 0, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_21xkr"]
-points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsu2k"]
+albedo_color = Color(0, 0.8980392, 0, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6bp64"]
-points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k12tt"]
+albedo_color = Color(0.42699346, 0.17258203, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1ilt"]
 size = Vector3(10.605, 11.975, 72.38)
@@ -59,130 +61,112 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gbba")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.49729, 0, 15.958931)
-use_collision = true
-size = Vector3(150, 0.1, 80)
-material = SubResource("StandardMaterial3D_bo1nx")
-
-[node name="Player" parent="." groups=["CutsceneObjects"] instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+[node name="Player" parent="." node_paths=PackedStringArray("interactIcon") groups=["CutsceneObjects"] instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.656866, 1.05, -12.712658)
 script = ExtResource("2_bo1nx")
+interactIcon = NodePath("InteractIcon")
 
 [node name="Camera" type="Camera3D" parent="Player" groups=["CutsceneObjects"]]
 transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, -0.4, 2.6, 5.25)
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera"]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.181223, 1.1758446, 10.082755)
-light_color = Color(1, 0.39215687, 1, 1)
-light_size = 1.0
-light_specular = 1.0
+[node name="InteractIcon" type="Sprite3D" parent="Player"]
+transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 0, 1.6852443, 0)
+billboard = 1
+texture = ExtResource("5_wsu2k")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2299347, 1.9068446, -6.159959)
-light_color = Color(0.26948076, 0.73195076, 0.99999994, 1)
-light_size = 1.0
-light_specular = 1.0
-
-[node name="World" type="Node3D" parent="."]
+[node name="World" type="Node3D" parent="." node_paths=PackedStringArray("player", "rayToPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6840224, 0, 0)
 script = ExtResource("4_21xkr")
+player = NodePath("../Player")
+rayToPlayer = NodePath("../Player/Camera/RayCast3D")
 SharedWallMaterial = ExtResource("5_21xkr")
+maxHoleSize = 0.1
+minHoleSize = 0.5
 
-[node name="Wall" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, -21.03348, 2.5974426, 0.6040968)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
+[node name="TempWorld" type="CSGCombiner3D" parent="World"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+use_collision = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall"]
+[node name="LeftWall" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.5, 5, 0)
+size = Vector3(1, 10, 100)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_21xkr")
+[node name="RightWall" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.5, 5, 0)
+size = Vector3(1, 10, 100)
 
-[node name="Wall4" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, -5.502975, 2.5974426, -13.876696)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
+[node name="BackWall" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -50)
+size = Vector3(125, 10, 1)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall4"]
+[node name="LeftOfAlley" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.182617, 7.994873, -40.431793)
+size = Vector3(17.634766, 15.989746, 18.39801)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall4/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_21xkr")
+[node name="Chipper" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.95817, 12.047333, -40.431793)
+visible = false
+size = Vector3(24.82019, 24.094666, 18.39801)
 
-[node name="Wall5" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, -12.742552, 2.5974426, -13.876696)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
+[node name="RivalChipper" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.41483, 12.047333, 16.01603)
+size = Vector3(24.82019, 24.094666, 18.39801)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall5"]
+[node name="Behind" type="CSGBox3D" parent="World/TempWorld/RivalChipper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.622341, -18.400837)
+size = Vector3(24.82019, 12.222626, 18.39801)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall5/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_21xkr")
+[node name="Bar" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.66571, 9.16008, -40.431793)
+size = Vector3(27.143433, 18.32016, 18.39801)
 
-[node name="Wall7" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, 41.494225, 2.5974426, 14.149912)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
+[node name="Bar2" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.31656, 5.7355766, 18.905605)
+size = Vector3(17.841736, 11.471153, 9.858673)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall7"]
+[node name="Bar3" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.036852, 5.7355766, 11.724297)
+size = Vector3(27.986298, 11.471153, 27.155586)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall7/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_21xkr")
+[node name="SuperValue" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.043463, 1.3934975, -40.431793)
+size = Vector3(27.143433, 21.904236, 18.39801)
 
-[node name="Wall8" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 5.295, 0, 0, 0, 13.495, 29.319483, 2.5974426, 14.149912)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
+[node name="Floor" type="CSGBox3D" parent="World/TempWorld"]
+use_collision = true
+size = Vector3(125, 0.1, 100)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall8"]
+[node name="TopRoad" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06338453, 0.03556627, -19.327744)
+size = Vector3(125, 0.1, 10)
+material = SubResource("StandardMaterial3D_fdnlq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall8/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_21xkr")
+[node name="BottomRoad" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06338453, 0.03556627, 32.465828)
+size = Vector3(125, 0.1, 10)
+material = SubResource("StandardMaterial3D_fdnlq")
 
-[node name="Wall2" type="MeshInstance3D" parent="World"]
-transform = Transform3D(-4.371139e-08, 0, 49.575, 0, 5.295, 0, -1, 0, -2.166992e-06, 3.9870152, 2.644786, 8.066641)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
+[node name="DownRoad" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 32.448288, 0.03556627, 4.315857)
+size = Vector3(47.95166, 0.1, 10)
+material = SubResource("StandardMaterial3D_fdnlq")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall2"]
+[node name="BlockingRival" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.37615, 5.893265, 37.524773)
+size = Vector3(0.14794922, 12.022081, 25)
+material = SubResource("StandardMaterial3D_jkdf5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall2/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_6bp64")
+[node name="Park?" type="CSGBox3D" parent="World/TempWorld"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.114439, 0.13941574, 7.0619736)
+size = Vector3(25.341064, 0.1, 36.320557)
+material = SubResource("StandardMaterial3D_wsu2k")
 
-[node name="Wall9" type="MeshInstance3D" parent="World"]
-transform = Transform3D(-4.371139e-08, 0, 49.575, 0, 5.295, 0, -1, 0, -2.166992e-06, 66.72848, 2.644786, 8.066641)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall9"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall9/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_6bp64")
-
-[node name="Wall3" type="MeshInstance3D" parent="World"]
-transform = Transform3D(-4.371139e-08, 0, 53.72, 0, 5.295, 0, -1, 0, -2.348176e-06, 21.741898, 2.8918352, -8.079622)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall3/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_6bp64")
-
-[node name="Wall6" type="MeshInstance3D" parent="World"]
-transform = Transform3D(-4.371139e-08, 0, 13.495, 0, 5.295, 0, -1, 0, -5.898852e-07, -19.680964, 2.8918352, -8.079622)
-mesh = SubResource("BoxMesh_8gbba")
-surface_material_override/0 = ExtResource("5_21xkr")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Wall6"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Wall6/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_6bp64")
-
-[node name="bench" parent="." instance=ExtResource("6_6bp64")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.17563, 0.05114548, -5.3715143)
+[node name="Dock" type="CSGBox3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.71129, 0, 56.651966)
+size = Vector3(12.484863, 1, 25.952148)
+material = SubResource("StandardMaterial3D_k12tt")
 
 [node name="Inventory" parent="." instance=ExtResource("3_6bp64")]
 anchors_preset = 1
@@ -218,4 +202,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25830078, 3.2216797, 1.1661
 shape = SubResource("BoxShape3D_6iyac")
 
 [node name="Guy" parent="." groups=["CutsceneObjects"] instance=ExtResource("6_21xkr")]
-transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 1.416214, 1.9738612, -4.6969433)
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -12.2620125, 1.9738612, -18.99218)
+
+[node name="building_chippy" parent="." instance=ExtResource("14_jkdf5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11.122964, -0.01181978, -14.706318)
