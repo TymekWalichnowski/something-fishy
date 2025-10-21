@@ -62,7 +62,7 @@ shadow_enabled = true
 environment = SubResource("Environment_8gbba")
 
 [node name="Player" parent="." groups=["CutsceneObjects"] instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.656866, 1.05, -12.712658)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.062699, 6.950102, 4.001574)
 script = ExtResource("2_bo1nx")
 
 [node name="Camera" type="Camera3D" parent="Player" groups=["CutsceneObjects"]]
@@ -122,11 +122,11 @@ size = Vector3(24.82019, 12.222626, 18.39801)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.66571, 9.16008, -40.431793)
 size = Vector3(27.143433, 18.32016, 18.39801)
 
-[node name="Bar2" type="CSGBox3D" parent="World/TempWorld"]
+[node name="Icecream" type="CSGBox3D" parent="World/TempWorld"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.31656, 5.7355766, 18.905605)
 size = Vector3(17.841736, 11.471153, 9.858673)
 
-[node name="Bar3" type="CSGBox3D" parent="World/TempWorld"]
+[node name="TourismShop" type="CSGBox3D" parent="World/TempWorld"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.036852, 5.7355766, 11.724297)
 size = Vector3(27.986298, 11.471153, 27.155586)
 
@@ -164,7 +164,7 @@ size = Vector3(25.341064, 0.1, 36.320557)
 material = SubResource("StandardMaterial3D_wsu2k")
 
 [node name="Dock" type="CSGBox3D" parent="World/TempWorld"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 41.581074, 0, 55.348473)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 41.581074, -0.939476, 55.348473)
 size = Vector3(6, 1, 12.5)
 material = SubResource("StandardMaterial3D_k12tt")
 
@@ -206,3 +206,6 @@ transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -12.2620125, 1.97386
 
 [node name="building_chippy" parent="." instance=ExtResource("14_jkdf5")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11.122964, -0.01181978, -14.706318)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8450685, 7.0022383, 5.924577)

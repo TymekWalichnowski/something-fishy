@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://h8uhi55qwedq"]
+
+[ext_resource type="Shader" uid="uid://c8oqmho2mey3h" path="res://Shaders/Toon.gdshader" id="1_evm44"]
+[ext_resource type="Texture2D" uid="uid://da0r6er785of5" path="res://Shaders/color_gradient.tres" id="2_t1bnt"]
+[ext_resource type="Texture2D" uid="uid://b812j18ke7gyl" path="res://Shaders/fresnel_gradient.tres" id="3_o15it"]
+[ext_resource type="Texture2D" uid="uid://buy5b0at0neyv" path="res://Assets/Textures/Characters/AnPhiastTemp.png" id="4_t1bnt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_evm44")
+shader_parameter/texture_albedo = ExtResource("4_t1bnt")
+shader_parameter/color_gradient = ExtResource("2_t1bnt")
+shader_parameter/fresnel_gradient = ExtResource("3_o15it")
