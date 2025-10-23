@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpslayjvs5alu"]
+
+[ext_resource type="PackedScene" uid="uid://dnokdo77pcfqi" path="res://Assets/Models/Building_Tree.glb" id="1_fnhv8"]
+[ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="2_t6v5i"]
+
+[node name="Building_Tree" instance=ExtResource("1_fnhv8")]
+
+[node name="Tree" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_t6v5i")

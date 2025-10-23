@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cndphylgywytr"
-path="res://.godot/imported/Building_Chippy.glb-10af32bd59d91d6d15bb89322cfcc23d.scn"
+uid="uid://cpl8601mr4kjy"
+path="res://.godot/imported/Building_Generic.glb-4c02505e0c9973e0f264012f26550684.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Building_Chippy.glb"
-dest_files=["res://.godot/imported/Building_Chippy.glb-10af32bd59d91d6d15bb89322cfcc23d.scn"]
+source_file="res://Assets/Models/Building_Generic.glb"
+dest_files=["res://.godot/imported/Building_Generic.glb-4c02505e0c9973e0f264012f26550684.scn"]
 
 [params]
 
@@ -37,14 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"GradientMap": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Assets/Models/GradientMap.tres",
-"use_external/path": "uid://dsv2qs47x0eus"
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
