@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=54 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -36,6 +36,10 @@
 [ext_resource type="Resource" uid="uid://bobkbplgbvppo" path="res://Dialogue/RoadCutoff.dialogue" id="32_kltya"]
 [ext_resource type="Texture2D" uid="uid://b1essx86huhki" path="res://Assets/Textures/Characters/Sea_Captain.png" id="33_e08e2"]
 [ext_resource type="Resource" uid="uid://c2sahe5b1xni7" path="res://Dialogue/CaptainDialogue.dialogue" id="34_neg2b"]
+[ext_resource type="Texture2D" uid="uid://dwckb67i7sqyu" path="res://Assets/Textures/FishyBusinessLogo.png" id="37_jwpg7"]
+[ext_resource type="Texture2D" uid="uid://bt5d6b78nrgvb" path="res://Assets/Textures/JamLogo.png" id="38_aqgau"]
+[ext_resource type="Texture2D" uid="uid://cx0xyj4ieaoqf" path="res://Assets/Festival.png" id="39_8cuat"]
+[ext_resource type="Texture2D" uid="uid://d2ey8hd1oyq15" path="res://setuLogo.png" id="40_o1aky"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -104,7 +108,7 @@ shadow_enabled = true
 environment = SubResource("Environment_8gbba")
 
 [node name="Player" parent="." groups=["CutsceneObjects", "CutscenePositions"] instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.164309, 1.1838837, -12.996563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.44672, 1.1838837, -23.225937)
 script = ExtResource("2_bo1nx")
 
 [node name="Camera" type="Camera3D" parent="Player" groups=["CutsceneObjects"]]
@@ -352,3 +356,25 @@ dialogue = ExtResource("34_neg2b")
 
 [node name="Dock" parent="." instance=ExtResource("25_u50mg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.617, 2, 26.432)
+
+[node name="Logo parent" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 53.698853, -59.725655)
+
+[node name="Logo" type="Sprite3D" parent="Logo parent" groups=["CutsceneObjects"]]
+billboard = 1
+texture = ExtResource("37_jwpg7")
+
+[node name="JamLogo" type="Sprite3D" parent="Logo parent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23281, -7.3613195, 0)
+billboard = 1
+texture = ExtResource("38_aqgau")
+
+[node name="AnimationLogo" type="Sprite3D" parent="Logo parent"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.19034831, -7.6425, 0)
+billboard = 1
+texture = ExtResource("39_8cuat")
+
+[node name="SETULogo" type="Sprite3D" parent="Logo parent"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 6.541443, -7.5458555, 0)
+billboard = 1
+texture = ExtResource("40_o1aky")

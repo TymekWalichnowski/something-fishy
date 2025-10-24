@@ -16,6 +16,7 @@ script = ExtResource("1_8s6bd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.97, 0, 0, 0, 2.97, 0, 0, 0, 2.97, 0.092041016, 0.04510498, -0.123168945)
+visible = false
 mesh = SubResource("BoxMesh_8s6bd")
 skeleton = NodePath("../CollisionShape3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_pmsje")
