@@ -7,11 +7,17 @@ public partial class InventoryUI : Control
 	private List<InventorySlot> slots = new List<InventorySlot>();
 	bool isOpen = false;
 
+	// Button
+	Button noEvidenceButton;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		// Give this to DialogueInteractions
 		DialogueInteractions.inventoryUI = this;
+
+		noEvidenceButton = GetNode<Button>("NoEvidence");
+		noEvidenceButton.Pressed += DialogueInteractions.CancelEvidence;
 
 		// Get the GridContainer
 		GridContainer grid = GetNode<GridContainer>("NinePatchRect/GridContainer");
@@ -43,10 +49,19 @@ public partial class InventoryUI : Control
 		}
 	}
 
-	public void Open()
+	public void Open(bool showNoEvidenceButton = false)
 	{
 		Visible = true;
 		isOpen = true;
+
+		if (showNoEvidenceButton)
+		{
+			noEvidenceButton.Visible = true;
+		}
+		else
+		{
+            noEvidenceButton.Visible = false;
+        }
 
 		for (int i = 0; i < Inventory.MAX_SIZE; i++)
 		{
@@ -70,4 +85,5 @@ public partial class InventoryUI : Control
 		Visible = false;
 		isOpen = false;
 	}
+	
 }

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://btdqp12rxcqfg"]
+
+[ext_resource type="Texture2D" uid="uid://q20uegdi275o" path="res://Assets/Textures/Items/Pipe.png" id="1_kinox"]
+[ext_resource type="Script" uid="uid://d3cc8jn4cdbt7" path="res://Inventory/InventoryItem.cs" id="1_kxgf6"]
+
+[resource]
+script = ExtResource("1_kxgf6")
+Name = "Pipe"
+Texture = ExtResource("1_kinox")
+metadata/_custom_type_script = "uid://d3cc8jn4cdbt7"

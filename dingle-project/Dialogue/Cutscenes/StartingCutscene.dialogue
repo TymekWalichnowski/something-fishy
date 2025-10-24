@@ -1,6 +1,12 @@
 ~ start
 ???: Where am I?
 ???: Who am I?
+do CutsceneManager.MoveToTarget("Hat", "Player", 1.0)
+do CutsceneManager.MoveToTarget("Coat", "Player", 1.0)
+do wait(1.0)
+do CutsceneManager.RemoveObject("Hat")
+do CutsceneManager.RemoveObject("Coat")
+do CutsceneManager.AddClothesToPlayer()
 Detective: Huh... I [wave]MUST[/wave] be a detective if I have this hat and coat!
 Detective: Oh and there's my badge
 do CutsceneManager.LookAt("Camera", "Badge", 1.0)

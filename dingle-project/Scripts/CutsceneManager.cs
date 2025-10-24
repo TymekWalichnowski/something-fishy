@@ -130,4 +130,14 @@ public partial class CutsceneManager : Node
 		Player player = gameObjects["Player"] as Player;
 		player.ResetCameraTween(timeTaken);
 	}
+
+	// PURELY FOR THE DEMO
+	public void AddClothesToPlayer()
+	{
+		ShaderMaterial playerShader = GD.Load<ShaderMaterial>("res://Shaders/ToonPlayer.tres");
+		// Clothed an Phiast
+		Texture2D texture = GD.Load<Texture2D>("res://Assets/Textures/Characters/AnPhiastTemp.png");
+
+		playerShader.SetShaderParameter("texture_albedo", texture);
+    }
 }

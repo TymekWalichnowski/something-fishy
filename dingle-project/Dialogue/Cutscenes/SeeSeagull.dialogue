@@ -1,0 +1,6 @@
+~ start
+do CutsceneManager.LookAt("Camera", "Seagull", 1.0)
+do wait(1.1)
+Detective: I wonder if there's a way over there... [do! wait(0.8)]
+do CutsceneManager.ResetCameraTween(0.75)
+=> END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bw746klx2fkgq"
+path="res://.godot/imported/Bench.dialogue-d63a842a59253070d16c7b9380ad44df.tres"
+
+[deps]
+
+source_file="res://Dialogue/Bench.dialogue"
+dest_files=["res://.godot/imported/Bench.dialogue-d63a842a59253070d16c7b9380ad44df.tres"]
+
+[params]
+
+defaults=true

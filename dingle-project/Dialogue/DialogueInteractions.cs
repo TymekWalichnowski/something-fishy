@@ -10,12 +10,16 @@ public partial class DialogueInteractions : Node
 	public delegate void WalkToEventHandler(Vector3 targetPosition);
 
 	public static InventoryUI inventoryUI;
+	static bool canceledEvidence;
+
+	public static bool hasGavePipe = false;
 
 	// Evidence Item Shown
 	static InventoryItem currentlyShownItem = null;
 
 	// Items that can be given
 	InventoryItem badgeItem;
+	InventoryItem pipeItem;
 
 	public override void _Ready()
 	{
@@ -23,12 +27,28 @@ public partial class DialogueInteractions : Node
 
 		// Load items
 		badgeItem = GD.Load<InventoryItem>("res://Inventory/Badge.tres");
+		pipeItem = GD.Load<InventoryItem>("res://Inventory/Pipe.tres");
+	}
+
+	public static bool hasGivenPipe()
+    {
+		return hasGavePipe;
+    }
+
+	public static void GivenPipe()
+	{
+		hasGavePipe = true;
 	}
 
 	public void GiveBadge()
 	{
 		Inventory.AddItem(badgeItem);
 	}
+
+	public void GivePipe()
+    {
+        Inventory.AddItem(pipeItem);
+    }
 
 	public void intro_scene_1() // An Phiast heard the owner and walks over to the chip shop
 	{
@@ -39,16 +59,36 @@ public partial class DialogueInteractions : Node
 
 	public static void ShowEvidence()
 	{
+		canceledEvidence = false;
 		if (inventoryUI != null)
 		{
 			GD.Print("Open");
-			inventoryUI.Open();
+			inventoryUI.Open(true);
 		}
 		else
 		{
 			GD.Print("Couldn't find inventory UI");
 		}
 	}
+
+	public static void CloseEvidence()
+	{
+		if (inventoryUI != null)
+		{
+			inventoryUI.Close();
+		}
+    }
+
+	public static void CancelEvidence()
+	{
+		if (inventoryUI != null)
+		{
+			inventoryUI.Close();
+			canceledEvidence = true;
+		}
+	}
+	
+	public static bool IsEvidenceCanceled() { return canceledEvidence;  }
 
 	public static void ClearEvidenceItem()
     {
@@ -67,7 +107,8 @@ public partial class DialogueInteractions : Node
 
 	private void OnEvidenceChosen(InventoryItem chosen)
     {
-        currentlyShownItem = chosen;
+		currentlyShownItem = chosen;
+		CloseEvidence();
         GD.Print($"Evidence chosen: {currentlyShownItem.Name}");
 
         // You can trigger any follow-up logic here

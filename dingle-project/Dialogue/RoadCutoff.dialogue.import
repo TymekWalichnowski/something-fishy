@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bobkbplgbvppo"
+path="res://.godot/imported/RoadCutoff.dialogue-812bc85e1fcb6fb4d1d3d3755872cb9f.tres"
+
+[deps]
+
+source_file="res://Dialogue/RoadCutoff.dialogue"
+dest_files=["res://.godot/imported/RoadCutoff.dialogue-812bc85e1fcb6fb4d1d3d3755872cb9f.tres"]
+
+[params]
+
+defaults=true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=50 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -13,17 +13,29 @@
 [ext_resource type="PackedScene" uid="uid://dnawa80lg0afn" path="res://Scenes/CutsceneTrigger.tscn" id="12_6iyac"]
 [ext_resource type="Script" uid="uid://dyy3h427yh0ux" path="res://Scripts/Cutscene.cs" id="12_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://d2gmph3jg5vf" path="res://Scenes/Buildings/building_generic.tscn" id="12_hibaj"]
+[ext_resource type="Texture2D" uid="uid://b221yqcaecbcw" path="res://Assets/Textures/Characters/PhiastHat.png" id="16_cbgmd"]
 [ext_resource type="PackedScene" uid="uid://dpslayjvs5alu" path="res://Scenes/Buildings/building_tree.tscn" id="16_k12tt"]
+[ext_resource type="Texture2D" uid="uid://bdui52y01r6wx" path="res://Assets/Textures/Characters/PhiastCoat.png" id="17_1w6v2"]
 [ext_resource type="PackedScene" uid="uid://cj1rm6ni850hd" path="res://Scenes/Buildings/building_bar.tscn" id="17_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://dlaks0kw33vxx" path="res://Assets/Models/bench.tscn" id="19_ee4r6"]
-[ext_resource type="Resource" uid="uid://bfe7fu15xvycx" path="res://StartingCutscene.dialogue" id="20_hibaj"]
+[ext_resource type="Resource" uid="uid://bfe7fu15xvycx" path="res://Dialogue/Cutscenes/StartingCutscene.dialogue" id="20_hibaj"]
 [ext_resource type="Script" uid="uid://ebwq3n6p4rpw" path="res://Scripts/Pickup.cs" id="21_3pmx8"]
-[ext_resource type="Resource" uid="uid://vjsjbxxbeop7" path="res://Dialogue/LeaveAlley.dialogue" id="21_cbgmd"]
+[ext_resource type="Resource" uid="uid://vjsjbxxbeop7" path="res://Dialogue/Cutscenes/LeaveAlley.dialogue" id="21_cbgmd"]
 [ext_resource type="Texture2D" uid="uid://kkvxaqsqbq4n" path="res://Assets/Textures/Items/badge.webp" id="22_gt3je"]
 [ext_resource type="Resource" uid="uid://dv5ddc3s0g1dy" path="res://Dialogue/pickupItem.dialogue" id="22_u50mg"]
 [ext_resource type="PackedScene" uid="uid://cbfhygpilytip" path="res://Scenes/interactable.tscn" id="23_3pmx8"]
-[ext_resource type="Resource" uid="uid://cpb6hh0pc4xcg" path="res://Dialogue/EvidenceTutorial.dialogue" id="24_3pmx8"]
+[ext_resource type="Resource" uid="uid://cpb6hh0pc4xcg" path="res://Dialogue/Cutscenes/EvidenceTutorial.dialogue" id="24_3pmx8"]
 [ext_resource type="PackedScene" uid="uid://beg8gembr7rl6" path="res://Scenes/cutscene_pos.tscn" id="25_u50mg"]
+[ext_resource type="Resource" uid="uid://c15w6gpq0kfx3" path="res://Dialogue/PickupPipe.dialogue" id="26_hdf80"]
+[ext_resource type="Texture2D" uid="uid://q20uegdi275o" path="res://Assets/Textures/Items/Pipe.png" id="26_r33sp"]
+[ext_resource type="Texture2D" uid="uid://cu6no0lwugppe" path="res://Assets/Textures/Characters/npc_gull.png" id="27_1w6v2"]
+[ext_resource type="Resource" uid="uid://3q7gwja1b2fs" path="res://Dialogue/Cutscenes/SeeSeagull.dialogue" id="28_ueoa1"]
+[ext_resource type="PackedScene" uid="uid://6f0lliel2sls" path="res://Scenes/cutscene_interactable.tscn" id="29_6vcvc"]
+[ext_resource type="Resource" uid="uid://bw746klx2fkgq" path="res://Dialogue/Bench.dialogue" id="30_7k868"]
+[ext_resource type="Resource" uid="uid://8ioq72b4h6d5" path="res://Dialogue/HouseDialogue.dialogue" id="31_hpc6h"]
+[ext_resource type="Resource" uid="uid://bobkbplgbvppo" path="res://Dialogue/RoadCutoff.dialogue" id="32_kltya"]
+[ext_resource type="Texture2D" uid="uid://b1essx86huhki" path="res://Assets/Textures/Characters/Sea_Captain.png" id="33_e08e2"]
+[ext_resource type="Resource" uid="uid://c2sahe5b1xni7" path="res://Dialogue/CaptainDialogue.dialogue" id="34_neg2b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -58,6 +70,24 @@ size = Vector3(8.926147, 0.10839844, 7.3745117)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gt3je"]
 size = Vector3(0.7488098, 7.7489014, 18.959198)
 
+[sub_resource type="SphereMesh" id="SphereMesh_ueoa1"]
+radius = 1.5
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vcvc"]
+albedo_color = Color(0.6056738, 1.6605109e-06, 3.85046e-07, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_neg2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_e08e2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_344ge")
 
@@ -74,7 +104,7 @@ shadow_enabled = true
 environment = SubResource("Environment_8gbba")
 
 [node name="Player" parent="." groups=["CutsceneObjects", "CutscenePositions"] instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.740759, 1.1838799, -21.039967)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.164309, 1.1838837, -12.996563)
 script = ExtResource("2_bo1nx")
 
 [node name="Camera" type="Camera3D" parent="Player" groups=["CutsceneObjects"]]
@@ -211,6 +241,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.848, 33.15235)
 [node name="OutsideChipper" type="Node3D" parent="." groups=["CutscenePositions"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.323, 2, -11.914)
 
+[node name="HatParent" type="Node3D" parent="."]
+
+[node name="Hat" type="Sprite3D" parent="HatParent" groups=["CutsceneObjects"]]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, -16.302979, 15.695145, -23.199385)
+billboard = 1
+texture = ExtResource("16_cbgmd")
+
+[node name="CoatParent" type="Node3D" parent="."]
+
+[node name="Coat" type="Sprite3D" parent="CoatParent" groups=["CutsceneObjects"]]
+transform = Transform3D(0.059914224, 0.0032070843, 0, -0.0032070843, 0.059914224, 0, 0, 0, 0.06, -20.28348, 14.263152, -23.199385)
+billboard = 1
+texture = ExtResource("17_1w6v2")
+
 [node name="StartCutscene" type="Node3D" parent="."]
 script = ExtResource("12_fdnlq")
 dialogue = ExtResource("20_hibaj")
@@ -244,6 +288,18 @@ transform = Transform3D(0.8415, 0, 0, 0, -0.01589033, 0.8413499, 0, -0.8413499, 
 transform = Transform3D(0.3, 0, 0, 0, -0.005665003, 0.29994652, 0, -0.29994652, -0.005665003, -20.416193, 0.0914948, -18.505428)
 texture = ExtResource("22_gt3je")
 
+[node name="Pickup Pipe" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.04171, 0, -21.241135)
+script = ExtResource("21_3pmx8")
+dialogue = ExtResource("26_hdf80")
+
+[node name="Interactable" parent="Pickup Pipe" instance=ExtResource("23_3pmx8")]
+transform = Transform3D(0.8415, 0, 0, 0, 0.8414999, 0, 0, 0, 0.8414999, 0, 0, 0)
+
+[node name="Pipe" type="Sprite3D" parent="Pickup Pipe" groups=["CutsceneObjects", "CutscenePositions"]]
+transform = Transform3D(0.3, 0, 0, 0, -0.005665003, 0.29994652, 0, -0.29994652, -0.005665003, 0, 0.2, 0)
+texture = ExtResource("26_r33sp")
+
 [node name="EvidenceTutorial" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8736243, -9.536743e-07, -13.322925)
 script = ExtResource("12_fdnlq")
@@ -254,3 +310,45 @@ dialogue = ExtResource("24_3pmx8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EvidenceTutorial/CutsceneTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1255951, 3.3744507, 7.279831)
 shape = SubResource("BoxShape3D_gt3je")
+
+[node name="Booey" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.826819, -0.6616287, 34.458305)
+mesh = SubResource("SphereMesh_ueoa1")
+surface_material_override/0 = SubResource("StandardMaterial3D_6vcvc")
+
+[node name="Seagull" type="Sprite3D" parent="Booey" groups=["CutsceneObjects", "CutscenePositions"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1112585, 0)
+billboard = 1
+texture = ExtResource("27_1w6v2")
+
+[node name="SeeSeagull" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.013058, 0, 29.674652)
+script = ExtResource("21_3pmx8")
+dialogue = ExtResource("28_ueoa1")
+
+[node name="Interactable" parent="SeeSeagull" instance=ExtResource("23_3pmx8")]
+transform = Transform3D(2.215, 0, 0, 0, 0.75, 0, 0, 0, 0.715, 0, 0, 3.253)
+
+[node name="BenchInteract" parent="." instance=ExtResource("29_6vcvc")]
+transform = Transform3D(2.33, 0, 0, 0, 0.625, 0, 0, 0, 0.93, -7, 0, -1)
+dialogue = ExtResource("30_7k868")
+
+[node name="HouseInteraction" parent="." instance=ExtResource("29_6vcvc")]
+transform = Transform3D(1.515, 0, 0, 0, 1, 0, 0, 0, 1, 9.446394, 1, 12)
+dialogue = ExtResource("31_hpc6h")
+
+[node name="Cutoff" parent="." instance=ExtResource("29_6vcvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.915, -14.953432, 1.4826788, 18.891285)
+dialogue = ExtResource("32_kltya")
+
+[node name="Captain" type="AnimatedSprite3D" parent="." groups=["CutsceneObjects", "CutscenePositions"]]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 26.009392, 1.9748063, -11.717587)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_neg2b")
+
+[node name="CutsceneInteractable" parent="Captain" instance=ExtResource("29_6vcvc")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+dialogue = ExtResource("34_neg2b")
+
+[node name="Dock" parent="." instance=ExtResource("25_u50mg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.617, 2, 26.432)

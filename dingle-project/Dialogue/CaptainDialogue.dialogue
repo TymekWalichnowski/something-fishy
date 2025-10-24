@@ -1,0 +1,38 @@
+~ start
+if (DialogueInteractions.hasGivenPipe() == true)
+	=> DockInteraction
+else
+	=> BarInteraction
+=> END
+
+~ DockInteraction
+Captain: You see them over there? [do! CutsceneManager.LookAt("Camera", "Seagull", 1.0)]
+Captain: That's the one I saw laughing
+Detective: How do we get over there? [do! CutsceneManager.ResetCameraTween(0.75)]
+Captain: We will take my boat!
+Detective: Wait you have a boat?
+Captain: Not yet unfortunately :(
+=> END
+
+~ BarInteraction
+Detective: Hello Sir, I'd like to ask you if you've seen anyone stealing a fish and Chips the chippers?
+???: Please don't call me Sir, call me Captain.
+Detective: Oh ok, anyway have you seen anything Captain?
+Captain: I'm not sure... If only I had my prized pipe to jog my memory.[do! DialogueInteractions.ShowEvidence()]
+while DialogueInteractions.GetCurrentItemName() != "Pipe"
+	if (DialogueInteractions.IsEvidenceCanceled() == true)
+		=> NoEvidence
+	Detective: That doesn't seem helpful right now...
+do DialogueInteractions.GivenPipe()
+Captain: Oh you actually found it!
+Detective: Of course, It is my job after all!
+Captain: Well since you found it. I think I remember hearing seagulls laughing. They might know something...
+Detective: Interesting...
+Captain: As a thank you for finding my pipe I can take you to one.
+Captain: Meet me at the dock. [do wait(1.5)]
+do CutsceneManager.MoveToTarget("Captain", "Dock", 5.0)
+=> END
+
+~ NoEvidence
+Captain: If you find it I may remember something...
+=> END

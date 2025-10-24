@@ -36,6 +36,12 @@ public partial class Player : CharacterBody3D
 		{
 			WalkTowardsTarget((float)delta);
 		}
+
+		// Dont display icon while interacting
+		if (!canMove && interactIcon.Visible)
+		{
+			HideInteract();
+		}
 	}
 
 	// Can be used to freeze the player whenever wanted

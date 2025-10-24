@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://3q7gwja1b2fs"
+path="res://.godot/imported/SeeSeagull.dialogue-bb7d528d1f32b2d231b6ff2c90694a96.tres"
+
+[deps]
+
+source_file="res://Dialogue/Cutscenes/SeeSeagull.dialogue"
+dest_files=["res://.godot/imported/SeeSeagull.dialogue-bb7d528d1f32b2d231b6ff2c90694a96.tres"]
+
+[params]
+
+defaults=true

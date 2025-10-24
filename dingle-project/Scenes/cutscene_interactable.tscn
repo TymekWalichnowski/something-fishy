@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://6f0lliel2sls"]
+
+[ext_resource type="Script" uid="uid://ebwq3n6p4rpw" path="res://Scripts/Pickup.cs" id="1_yypsm"]
+[ext_resource type="PackedScene" uid="uid://cbfhygpilytip" path="res://Scenes/interactable.tscn" id="2_gq1al"]
+
+[node name="CutsceneInteractable" type="Node3D"]
+script = ExtResource("1_yypsm")
+
+[node name="Interactable" parent="." instance=ExtResource("2_gq1al")]

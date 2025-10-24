@@ -58,3 +58,12 @@ layout_mode = 2
 
 [node name="InventoryPanel12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_dt15g")]
 layout_mode = 2
+
+[node name="NoEvidence" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 398.0
+offset_right = 127.0
+offset_bottom = 443.0
+grow_horizontal = 2
+text = "No Evidence"
