@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cpb6hh0pc4xcg"
+path="res://.godot/imported/EvidenceTutorial.dialogue-4141159f13b0fcee5ac552fb0e6522a5.tres"
+
+[deps]
+
+source_file="res://Dialogue/EvidenceTutorial.dialogue"
+dest_files=["res://.godot/imported/EvidenceTutorial.dialogue-4141159f13b0fcee5ac552fb0e6522a5.tres"]
+
+[params]
+
+defaults=true

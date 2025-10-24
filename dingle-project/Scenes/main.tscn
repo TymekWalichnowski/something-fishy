@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=35 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://kkvxaqsqbq4n" path="res://Assets/Textures/Items/badge.webp" id="22_gt3je"]
 [ext_resource type="Resource" uid="uid://dv5ddc3s0g1dy" path="res://Dialogue/pickupItem.dialogue" id="22_u50mg"]
 [ext_resource type="PackedScene" uid="uid://cbfhygpilytip" path="res://Scenes/interactable.tscn" id="23_3pmx8"]
+[ext_resource type="Resource" uid="uid://cpb6hh0pc4xcg" path="res://Dialogue/EvidenceTutorial.dialogue" id="24_3pmx8"]
 [ext_resource type="PackedScene" uid="uid://beg8gembr7rl6" path="res://Scenes/cutscene_pos.tscn" id="25_u50mg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
@@ -53,6 +54,9 @@ size = Vector3(6.04718, 1, 8.522949)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3pmx8"]
 size = Vector3(8.926147, 0.10839844, 7.3745117)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt3je"]
+size = Vector3(0.7488098, 7.7489014, 18.959198)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_344ge")
@@ -201,6 +205,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.328966, 1.05, -2.2798724)
 [node name="Guy" parent="." groups=["CutsceneObjects"] instance=ExtResource("6_21xkr")]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -5.7018504, 1.9738612, -18.99218)
 
+[node name="Sky" parent="." instance=ExtResource("25_u50mg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.848, 33.15235)
+
+[node name="OutsideChipper" type="Node3D" parent="." groups=["CutscenePositions"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.323, 2, -11.914)
+
 [node name="StartCutscene" type="Node3D" parent="."]
 script = ExtResource("12_fdnlq")
 dialogue = ExtResource("20_hibaj")
@@ -234,5 +244,13 @@ transform = Transform3D(0.8415, 0, 0, 0, -0.01589033, 0.8413499, 0, -0.8413499, 
 transform = Transform3D(0.3, 0, 0, 0, -0.005665003, 0.29994652, 0, -0.29994652, -0.005665003, -20.416193, 0.0914948, -18.505428)
 texture = ExtResource("22_gt3je")
 
-[node name="Sky" parent="." instance=ExtResource("25_u50mg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.848, 33.15235)
+[node name="EvidenceTutorial" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8736243, -9.536743e-07, -13.322925)
+script = ExtResource("12_fdnlq")
+dialogue = ExtResource("24_3pmx8")
+
+[node name="CutsceneTrigger" parent="EvidenceTutorial" instance=ExtResource("12_6iyac")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EvidenceTutorial/CutsceneTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1255951, 3.3744507, 7.279831)
+shape = SubResource("BoxShape3D_gt3je")

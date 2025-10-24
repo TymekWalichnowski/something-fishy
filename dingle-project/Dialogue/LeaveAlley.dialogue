@@ -1,7 +1,6 @@
 ~ start
-do CutsceneManager.MoveToTarget("Camera", "Sky", 4.0)
+do CutsceneManager.MoveToTarget("Camera", "Sky", 3.5)
 do wait(2.5)
-Detective: Now it's time to continue my journey as a detective!
-do wait(1.5)
+Detective: Now it's time to continue my journey as a detective! [do! wait(2.5)]
 do CutsceneManager.ResetCameraTween(1.0)
 => END

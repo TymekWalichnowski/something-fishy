@@ -1,0 +1,18 @@
+~ start
+???: [shake rate=30 level=20]WHERE DID IT GO![/shake]
+do CutsceneManager.MoveToTarget("Guy", "OutsideChipper", 0.5)
+do wait(0.5)
+Detective: Is everything ok?
+???: [shake rate=30 level=20]IT'S GONE![/shake]
+???: [shake rate=30 level=20]IT WAS YOU WASN'T IT[/shake]
+Detective: I dont know what you're talking about
+???: [shake rate=30 level=20]IF THAT'S TRUE THEN PROVE IT[/shake][do! DialogueInteractions.ShowEvidence()]
+while DialogueInteractions.GetCurrentItemName() != "Badge"
+	Detective: That doesn't seem helpful right now...
+Detective: I'm a detective, I solve problems, not cause them.
+???: I see... I must be wrong then...
+???: Sorry to spook you like that. My name is "Chipper guy"
+Chipper guy: You see, someone stole the perfect fish and chips I just made.
+Detective: I see... I will try help find the culprit!
+Chipper guy: That would be great!
+=> END
