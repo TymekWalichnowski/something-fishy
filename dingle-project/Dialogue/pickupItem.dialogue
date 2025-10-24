@@ -1,0 +1,8 @@
+~ start
+Should I pick this up?
+- Yes
+	Detective: Into the pocket it goes! [do! CutsceneManager.RemoveObject("Badge")]
+	do DialogueInteractions.GiveBadge()
+- No
+	Detective: I should probably leave it there...
+=> END

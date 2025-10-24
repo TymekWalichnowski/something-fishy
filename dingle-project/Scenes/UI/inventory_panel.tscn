@@ -9,4 +9,6 @@ offset_bottom = 100.0
 script = ExtResource("1_jah84")
 
 [node name="Item Display" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 centered = false
+offset = Vector2(-15, -25)

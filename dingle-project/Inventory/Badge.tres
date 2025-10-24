@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c5o4183752jnw"]
 
-[ext_resource type="Texture2D" uid="uid://cw4sfuqut8olb" path="res://icon.svg" id="1_73d05"]
+[ext_resource type="Texture2D" uid="uid://kkvxaqsqbq4n" path="res://Assets/Textures/Items/badge.webp" id="1_73d05"]
 [ext_resource type="Script" uid="uid://d3cc8jn4cdbt7" path="res://Inventory/InventoryItem.cs" id="1_uj27t"]
 
 [resource]

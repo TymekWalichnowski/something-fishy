@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=35 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -19,6 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://dpslayjvs5alu" path="res://Scenes/Buildings/building_tree.tscn" id="16_k12tt"]
 [ext_resource type="PackedScene" uid="uid://cj1rm6ni850hd" path="res://Scenes/Buildings/building_bar.tscn" id="17_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://dlaks0kw33vxx" path="res://Assets/Models/bench.tscn" id="19_ee4r6"]
+[ext_resource type="Resource" uid="uid://bfe7fu15xvycx" path="res://StartingCutscene.dialogue" id="20_hibaj"]
+[ext_resource type="Script" uid="uid://ebwq3n6p4rpw" path="res://Scripts/Pickup.cs" id="21_3pmx8"]
+[ext_resource type="Texture2D" uid="uid://kkvxaqsqbq4n" path="res://Assets/Textures/Items/badge.webp" id="22_gt3je"]
+[ext_resource type="Resource" uid="uid://dv5ddc3s0g1dy" path="res://Dialogue/pickupItem.dialogue" id="22_u50mg"]
+[ext_resource type="PackedScene" uid="uid://cbfhygpilytip" path="res://Scenes/interactable.tscn" id="23_3pmx8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -50,6 +55,9 @@ size = Vector3(10.605, 11.975, 72.38)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6iyac"]
 size = Vector3(0.48339844, 7.4433594, 16.849976)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pdsj5"]
+size = Vector3(6.04718, 1, 8.522949)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_344ge")
 
@@ -65,8 +73,8 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gbba")
 
-[node name="Player" parent="." groups=["CutsceneObjects"] instance=ExtResource("1_jjgbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.062699, 1.1838799, -7.9065084)
+[node name="Player" parent="." groups=["CutsceneObjects", "CutscenePositions"] instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.740759, 1.1838799, -21.039967)
 script = ExtResource("2_bo1nx")
 
 [node name="Camera" type="Camera3D" parent="Player" groups=["CutsceneObjects"]]
@@ -217,3 +225,25 @@ shape = SubResource("BoxShape3D_6iyac")
 
 [node name="Guy" parent="." groups=["CutsceneObjects"] instance=ExtResource("6_21xkr")]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -12.2620125, 1.9738612, -18.99218)
+
+[node name="StartCutscene" type="Node3D" parent="."]
+script = ExtResource("12_fdnlq")
+dialogue = ExtResource("20_hibaj")
+
+[node name="CutsceneTrigger" parent="StartCutscene" instance=ExtResource("12_6iyac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.701162, 0.025001526, -21.652134)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartCutscene/CutsceneTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0217648, 0.2524395, 0.41343307)
+shape = SubResource("BoxShape3D_pdsj5")
+
+[node name="Pickup" type="Node3D" parent="."]
+script = ExtResource("21_3pmx8")
+dialogue = ExtResource("22_u50mg")
+
+[node name="Interactable" parent="Pickup" instance=ExtResource("23_3pmx8")]
+transform = Transform3D(0.8415, 0, 0, 0, -0.01589033, 0.8413499, 0, -0.8413499, -0.01589033, -20.416193, 0.0914948, -18.505428)
+
+[node name="Badge" type="Sprite3D" parent="Pickup" groups=["CutsceneObjects", "CutscenePositions"]]
+transform = Transform3D(0.3, 0, 0, 0, -0.005665003, 0.29994652, 0, -0.29994652, -0.005665003, -20.416193, 0.0914948, -18.505428)
+texture = ExtResource("22_gt3je")

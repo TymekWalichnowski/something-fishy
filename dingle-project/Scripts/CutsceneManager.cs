@@ -123,9 +123,14 @@ public partial class CutsceneManager : Node
 		GD.Print($"{objectName} rotating to face target position {lookTargetPos}");
 	}
 
+	public void RemoveObject(string t_name)
+	{
+		gameObjects[t_name].GetParent().QueueFree();
+	}
+
 	public void ResetCameraTween(float timeTaken)
-    {
+	{
 		Player player = gameObjects["Player"] as Player;
 		player.ResetCameraTween(timeTaken);
-    }
+	}
 }
