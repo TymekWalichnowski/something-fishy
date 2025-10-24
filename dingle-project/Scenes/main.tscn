@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=60 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -8,11 +8,14 @@
 [ext_resource type="Script" uid="uid://cm02fvi1ywn3u" path="res://Scripts/WallShaderUpdater.cs" id="4_21xkr"]
 [ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bf30b52oyut6p" path="res://Assets/Textures/UI/ui_key.png" id="5_wsu2k"]
+[ext_resource type="AudioStream" uid="uid://djui5gkgevcq1" path="res://Assets/Audio/pea-point-new-brunswick-seaside-ambience-17262.mp3" id="6_8cuat"]
 [ext_resource type="PackedScene" uid="uid://bif16dtoak0j" path="res://Scenes/base_npc.tscn" id="6_21xkr"]
+[ext_resource type="AudioStream" uid="uid://bgv6luvil457i" path="res://Assets/Audio/st3-footstep-sfx-323056.mp3" id="6_kwxat"]
 [ext_resource type="PackedScene" uid="uid://dfg0mlr1c5yau" path="res://Scenes/Buildings/building_chippy.tscn" id="11_fevyy"]
 [ext_resource type="PackedScene" uid="uid://dnawa80lg0afn" path="res://Scenes/CutsceneTrigger.tscn" id="12_6iyac"]
 [ext_resource type="Script" uid="uid://dyy3h427yh0ux" path="res://Scripts/Cutscene.cs" id="12_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://d2gmph3jg5vf" path="res://Scenes/Buildings/building_generic.tscn" id="12_hibaj"]
+[ext_resource type="Shader" uid="uid://cjxhuos8bsd63" path="res://Shaders/Water.gdshader" id="14_o1aky"]
 [ext_resource type="Texture2D" uid="uid://b221yqcaecbcw" path="res://Assets/Textures/Characters/PhiastHat.png" id="16_cbgmd"]
 [ext_resource type="PackedScene" uid="uid://dpslayjvs5alu" path="res://Scenes/Buildings/building_tree.tscn" id="16_k12tt"]
 [ext_resource type="Texture2D" uid="uid://bdui52y01r6wx" path="res://Assets/Textures/Characters/PhiastCoat.png" id="17_1w6v2"]
@@ -30,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://q20uegdi275o" path="res://Assets/Textures/Items/Pipe.png" id="26_r33sp"]
 [ext_resource type="Texture2D" uid="uid://cu6no0lwugppe" path="res://Assets/Textures/Characters/npc_gull.png" id="27_1w6v2"]
 [ext_resource type="Resource" uid="uid://3q7gwja1b2fs" path="res://Dialogue/Cutscenes/SeeSeagull.dialogue" id="28_ueoa1"]
-[ext_resource type="PackedScene" uid="uid://6f0lliel2sls" path="res://Scenes/cutscene_interactable.tscn" id="29_6vcvc"]
+[ext_resource type="PackedScene" path="res://Scenes/cutscene_interactable.tscn" id="29_6vcvc"]
 [ext_resource type="Resource" uid="uid://bw746klx2fkgq" path="res://Dialogue/Bench.dialogue" id="30_7k868"]
 [ext_resource type="Resource" uid="uid://8ioq72b4h6d5" path="res://Dialogue/HouseDialogue.dialogue" id="31_hpc6h"]
 [ext_resource type="Resource" uid="uid://bobkbplgbvppo" path="res://Dialogue/RoadCutoff.dialogue" id="32_kltya"]
@@ -40,10 +43,13 @@
 [ext_resource type="Texture2D" uid="uid://bt5d6b78nrgvb" path="res://Assets/Textures/JamLogo.png" id="38_aqgau"]
 [ext_resource type="Texture2D" uid="uid://cx0xyj4ieaoqf" path="res://Assets/Festival.png" id="39_8cuat"]
 [ext_resource type="Texture2D" uid="uid://d2ey8hd1oyq15" path="res://setuLogo.png" id="40_o1aky"]
+[ext_resource type="AudioStream" uid="uid://b3grjdfkrh7de" path="res://Assets/Audio/handle_paper_1-88804.mp3" id="44_aa8k8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+sky_top_color = Color(0.31952295, 0.74371976, 0.81359, 1)
+sky_horizon_color = Color(0.67228836, 0.855156, 0.80857086, 1)
+ground_bottom_color = Color(0.37437516, 0.62534374, 0.81561565, 1)
+ground_horizon_color = Color(0.67228836, 0.855156, 0.80857086, 1)
 
 [sub_resource type="Sky" id="Sky_bo1nx"]
 sky_material = SubResource("ProceduralSkyMaterial_jjgbg")
@@ -64,6 +70,23 @@ albedo_color = Color(0, 0.8980392, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k12tt"]
 albedo_color = Color(0.42699346, 0.17258203, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwxat"]
+render_priority = 0
+shader = ExtResource("14_o1aky")
+shader_parameter/WATER_COL = Color(0.2182031, 0.5100723, 0.9894776, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aa8k8"]
+material = SubResource("ShaderMaterial_kwxat")
+size = Vector2(67.76, 32.66)
+subdivide_width = 6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pdsj5"]
 size = Vector3(6.04718, 1, 8.522949)
@@ -121,6 +144,14 @@ transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 0, 1.6852443, 0)
 visible = false
 billboard = 1
 texture = ExtResource("5_wsu2k")
+
+[node name="PlayerNoises" type="AudioStreamPlayer3D" parent="Player"]
+stream = ExtResource("6_kwxat")
+
+[node name="AudioStreamWorld" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("6_8cuat")
+volume_db = -15.0
+autoplay = true
 
 [node name="World" type="Node3D" parent="." node_paths=PackedStringArray("player", "rayToPlayer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6840224, 0, 0)
@@ -223,6 +254,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11.
 
 [node name="Building_Generic" parent="World" instance=ExtResource("12_hibaj")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.8679643, 0.037583172, 9.681768)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8986292, -1.2462151, 35.89198)
+mesh = SubResource("PlaneMesh_aa8k8")
 
 [node name="Inventory" parent="." instance=ExtResource("3_6bp64")]
 anchors_preset = 1
@@ -378,3 +413,7 @@ texture = ExtResource("39_8cuat")
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 6.541443, -7.5458555, 0)
 billboard = 1
 texture = ExtResource("40_o1aky")
+
+[node name="InteractNoises" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("44_aa8k8")
+volume_db = -20.0

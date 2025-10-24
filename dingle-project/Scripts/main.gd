@@ -15,6 +15,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu_toggle()
+	if Input.is_action_pressed("LeftClick"):
+		if (!$InteractNoises.playing):
+			$InteractNoises.play()
 
 
 func _on_walk_to(target_position: Vector3) -> void:

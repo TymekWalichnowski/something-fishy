@@ -7,17 +7,19 @@ else
 
 ~ DockInteraction
 Captain: You see them over there? [do! CutsceneManager.LookAt("Camera", "Seagull", 1.0)]
-Captain: That's the one I saw laughing
+Captain: Yup. That's the one I saw laughing
 Detective: How do we get over there? [do! CutsceneManager.ResetCameraTween(0.75)]
 Captain: We will take my boat!
-Detective: Wait you have a boat?
-Captain: Not yet unfortunately :(
+Detective: Wait, you have a boat?
+Captain: Not yet, you'll have to wait until the full game release to get over there!
+Detective: Oh ok! I guess that's it for the demo, then?
+Captain: Yup! I hope you enjoyed!
 => END
 
 ~ BarInteraction
-Detective: Hello Sir, I'd like to ask you if you've seen anyone stealing a fish and Chips the chippers?
+Detective: Hello Sir, I'd like to ask you if you've seen anyone committing any fish-and-chip-related-crimes lately?
 ???: Please don't call me Sir, call me Captain.
-Detective: Oh ok, anyway have you seen anything Captain?
+Detective: Oh ok, sooo... Have you seen anything, Captain?
 Captain: I'm not sure... If only I had my prized pipe to jog my memory.[do! DialogueInteractions.ShowEvidence()]
 while DialogueInteractions.GetCurrentItemName() != "Pipe"
 	if (DialogueInteractions.IsEvidenceCanceled() == true)
@@ -25,10 +27,10 @@ while DialogueInteractions.GetCurrentItemName() != "Pipe"
 	Detective: That doesn't seem helpful right now...
 do DialogueInteractions.GivenPipe()
 Captain: Oh you actually found it!
-Detective: Of course, It is my job after all!
-Captain: Well since you found it. I think I remember hearing seagulls laughing. They might know something...
+Detective: Of course. As a detective, I find many things!
+Captain: Well since you found it. I think I remember hearing some seagulls laughing. They might know something...
 Detective: Interesting...
-Captain: As a thank you for finding my pipe I can take you to one.
+Captain: As a thank you for finding my pipe, I can take you to one.
 Captain: Meet me at the dock. [do wait(1.5)]
 do CutsceneManager.MoveToTarget("Captain", "Dock", 5.0)
 => END

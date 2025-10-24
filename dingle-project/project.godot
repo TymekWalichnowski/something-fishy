@@ -82,10 +82,15 @@ Pause={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+LeftClick={
+"deadzone": 0.2,
+"events": [null, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(171, 15),"global_position":Vector2(180, 63),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Test.dialogue", "res://Dialogue/NPCS/ChipperIntro.dialogue", "res://Dialogue/TestCutscene.dialogue", "res://Dialogue/pickupItem.dialogue", "res://Dialogue/Cutscenes/EvidenceTutorial.dialogue", "res://Dialogue/Cutscenes/LeaveAlley.dialogue", "res://Dialogue/Cutscenes/StartingCutscene.dialogue", "res://Dialogue/Cutscenes/SeeSeagull.dialogue", "res://Dialogue/Bench.dialogue", "res://Dialogue/HouseDialogue.dialogue", "res://Dialogue/RoadCutoff.dialogue", "res://Dialogue/CaptainDialogue.dialogue", "res://Dialogue/PickupPipe.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Test.dialogue", "res://Dialogue/NPCS/ChipperIntro.dialogue", "res://Dialogue/TestCutscene.dialogue", "res://Dialogue/pickupItem.dialogue", "res://Dialogue/Cutscenes/EvidenceTutorial.dialogue", "res://Dialogue/Cutscenes/LeaveAlley.dialogue", "res://Dialogue/Cutscenes/StartingCutscene.dialogue", "res://Dialogue/Cutscenes/SeeSeagull.dialogue", "res://Dialogue/Bench.dialogue", "res://Dialogue/HouseDialogue.dialogue", "res://Dialogue/RoadCutoff.dialogue", "res://Dialogue/CaptainDialogue.dialogue", "res://Dialogue/PickupPipe.dialogue", "res://Dialogue/EvidenceTutorial.dialogue", "res://Dialogue/LeaveAlley.dialogue", "res://StartingCutscene.dialogue")
 
 [rendering]
 

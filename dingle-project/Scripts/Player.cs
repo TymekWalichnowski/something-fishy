@@ -15,15 +15,19 @@ public partial class Player : CharacterBody3D
 	Transform3D originalCameraTransform;
 
 	static Sprite3D interactIcon;
+	
+	// Audio
+	AudioStreamPlayer3D playerNoises;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		camera = GetNode<Node3D>("Camera");
+		playerNoises = GetNode<AudioStreamPlayer3D>("PlayerNoises");
 		originalCameraTransform = camera.Transform;
 
 		interactIcon = GetNode<Sprite3D>("InteractIcon");
 		HideInteract();
-    }
+	}
 
 
 	public override void _PhysicsProcess(double delta)
@@ -77,7 +81,13 @@ public partial class Player : CharacterBody3D
 		{
 			velocity.X = direction.X * Speed;
 			velocity.Z = direction.Z * Speed;
+			
+			if (!playerNoises.Playing) // player movement audio
+			{
+				playerNoises.Play();
+			}
 		}
+		
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
@@ -86,6 +96,8 @@ public partial class Player : CharacterBody3D
 
 		Velocity = velocity;
 		MoveAndSlide();
+		
+
 	}
 
 	public static void ShowInteract()
@@ -93,9 +105,9 @@ public partial class Player : CharacterBody3D
 		interactIcon.Visible = true;
 	}
 	public static void HideInteract()
-    {
-        interactIcon.Visible = false;
-    }
+	{
+		interactIcon.Visible = false;
+	}
 	
 	public void WalkTo(Vector3 target) // Setting target and disabling movement
 	{
@@ -127,9 +139,9 @@ public partial class Player : CharacterBody3D
 	}
 
 	public void ResetCameraTween(float t_timeTaken)
-    {
-        var tween = GetTree().CreateTween();
-        // Tween back to the cached transform (position + rotation + scale)
-        tween.TweenProperty(camera, "transform", originalCameraTransform, t_timeTaken);
-    }
+	{
+		var tween = GetTree().CreateTween();
+		// Tween back to the cached transform (position + rotation + scale)
+		tween.TweenProperty(camera, "transform", originalCameraTransform, t_timeTaken);
+	}
 }
