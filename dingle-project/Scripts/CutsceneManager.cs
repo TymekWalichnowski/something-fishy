@@ -57,16 +57,13 @@ public partial class CutsceneManager : Node
 
 		Node3D targetObject = gameObjects[objectName];
 		Vector3 targetPos = positions[targetPosName].GlobalPosition;
-		targetPos.Y = targetObject.GlobalPosition.Y; // Set Y level to be the same as the original object
+		// targetPos.Y = targetObject.GlobalPosition.Y; // Set Y level to be the same as the original object
 
 		// Create a tween
 		var tween = GetTree().CreateTween();
 
 		// Animate the GlobalPosition property
 		tween.TweenProperty(targetObject, "global_position", targetPos, timeTaken);
-
-		// Optionally wait for it to finish
-		GD.Print($"{objectName} finished moving.");
 	}
 
 	public void RotateObject(string objectName, Vector3 targetRotation, float timeTaken = 1.0f)

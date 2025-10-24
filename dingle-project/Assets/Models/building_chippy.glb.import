@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cndphylgywytr"
-path="res://.godot/imported/building_chippy.glb-bb687fb685dcb4ea1a5926c8b439e068.scn"
+path="res://.godot/imported/Building_Chippy.glb-10af32bd59d91d6d15bb89322cfcc23d.scn"
 
 [deps]
 
-source_file="res://Assets/Models/building_chippy.glb"
-dest_files=["res://.godot/imported/building_chippy.glb-bb687fb685dcb4ea1a5926c8b439e068.scn"]
+source_file="res://Assets/Models/Building_Chippy.glb"
+dest_files=["res://.godot/imported/Building_Chippy.glb-10af32bd59d91d6d15bb89322cfcc23d.scn"]
 
 [params]
 

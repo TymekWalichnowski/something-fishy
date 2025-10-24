@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://gxolafe3yyrs"]
+[gd_scene load_steps=33 format=3 uid="uid://gxolafe3yyrs"]
 
 [ext_resource type="Script" uid="uid://dhbi6ead78uwe" path="res://Scripts/main.gd" id="1_344ge"]
 [ext_resource type="PackedScene" uid="uid://2s8lqgcm2uu6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
@@ -9,21 +9,20 @@
 [ext_resource type="Material" uid="uid://flen3e3pr3e3" path="res://Shaders/WallHoleMaterial.tres" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bf30b52oyut6p" path="res://Assets/Textures/UI/ui_key.png" id="5_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://bif16dtoak0j" path="res://Scenes/base_npc.tscn" id="6_21xkr"]
-[ext_resource type="PackedScene" uid="uid://cnht7rh54wui5" path="res://Scenes/NPCS/Chipper_Intro.tscn" id="9_ynf5e"]
-[ext_resource type="Script" uid="uid://bjobunxb0k3ki" path="res://Scripts/TriggerZone.cs" id="10_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dfg0mlr1c5yau" path="res://Scenes/Buildings/building_chippy.tscn" id="11_fevyy"]
 [ext_resource type="PackedScene" uid="uid://dnawa80lg0afn" path="res://Scenes/CutsceneTrigger.tscn" id="12_6iyac"]
 [ext_resource type="Script" uid="uid://dyy3h427yh0ux" path="res://Scripts/Cutscene.cs" id="12_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://d2gmph3jg5vf" path="res://Scenes/Buildings/building_generic.tscn" id="12_hibaj"]
-[ext_resource type="Resource" uid="uid://bfockbj0pmouy" path="res://Dialogue/TestCutscene.dialogue" id="13_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://dpslayjvs5alu" path="res://Scenes/Buildings/building_tree.tscn" id="16_k12tt"]
 [ext_resource type="PackedScene" uid="uid://cj1rm6ni850hd" path="res://Scenes/Buildings/building_bar.tscn" id="17_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://dlaks0kw33vxx" path="res://Assets/Models/bench.tscn" id="19_ee4r6"]
 [ext_resource type="Resource" uid="uid://bfe7fu15xvycx" path="res://StartingCutscene.dialogue" id="20_hibaj"]
 [ext_resource type="Script" uid="uid://ebwq3n6p4rpw" path="res://Scripts/Pickup.cs" id="21_3pmx8"]
+[ext_resource type="Resource" uid="uid://vjsjbxxbeop7" path="res://Dialogue/LeaveAlley.dialogue" id="21_cbgmd"]
 [ext_resource type="Texture2D" uid="uid://kkvxaqsqbq4n" path="res://Assets/Textures/Items/badge.webp" id="22_gt3je"]
 [ext_resource type="Resource" uid="uid://dv5ddc3s0g1dy" path="res://Dialogue/pickupItem.dialogue" id="22_u50mg"]
 [ext_resource type="PackedScene" uid="uid://cbfhygpilytip" path="res://Scenes/interactable.tscn" id="23_3pmx8"]
+[ext_resource type="PackedScene" uid="uid://beg8gembr7rl6" path="res://Scenes/cutscene_pos.tscn" id="25_u50mg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -49,14 +48,11 @@ albedo_color = Color(0, 0.8980392, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k12tt"]
 albedo_color = Color(0.42699346, 0.17258203, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d1ilt"]
-size = Vector3(10.605, 11.975, 72.38)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6iyac"]
-size = Vector3(0.48339844, 7.4433594, 16.849976)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_pdsj5"]
 size = Vector3(6.04718, 1, 8.522949)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3pmx8"]
+size = Vector3(8.926147, 0.10839844, 7.3745117)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_344ge")
@@ -182,7 +178,7 @@ transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, 
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 23.457565, 0.082751274, -14.358808)
 
 [node name="Building_Tree" parent="World" instance=ExtResource("16_k12tt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.675228, 0.23888731, 8.645786)
+transform = Transform3D(0.58770055, 0, -0.8090785, 0, 1, 0, 0.8090785, 0, 0.58770055, -5.071505, 0.23888731, -4.4356785)
 
 [node name="Building_Chippy" parent="World" instance=ExtResource("11_fevyy")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11.37607, 0.13722038, -16.236368)
@@ -199,32 +195,11 @@ offset_bottom = 399.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="ChipperGuy" parent="." groups=["CutscenePositions"] instance=ExtResource("9_ynf5e")]
-transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 37.813454, 1.8095293, -4.88525)
-
-[node name="TriggerZone" type="Area3D" parent="ChipperGuy"]
-script = ExtResource("10_hptm8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChipperGuy/TriggerZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.788927, 0, 23.222576)
-shape = SubResource("BoxShape3D_d1ilt")
-
 [node name="Chipper" type="Node3D" parent="." groups=["CutscenePositions"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.328966, 1.05, -2.2798724)
 
-[node name="ChipperCutscene" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.911386, 0, 0)
-script = ExtResource("12_fdnlq")
-dialogue = ExtResource("13_jkdf5")
-
-[node name="CutsceneTrigger" parent="ChipperCutscene" instance=ExtResource("12_6iyac")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ChipperCutscene/CutsceneTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.44613, 3.2216797, -8.225517)
-shape = SubResource("BoxShape3D_6iyac")
-
 [node name="Guy" parent="." groups=["CutsceneObjects"] instance=ExtResource("6_21xkr")]
-transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -12.2620125, 1.9738612, -18.99218)
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, -5.7018504, 1.9738612, -18.99218)
 
 [node name="StartCutscene" type="Node3D" parent="."]
 script = ExtResource("12_fdnlq")
@@ -237,6 +212,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.701162, 0.025001526, -21.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0217648, 0.2524395, 0.41343307)
 shape = SubResource("BoxShape3D_pdsj5")
 
+[node name="LeavingAlley" type="Node3D" parent="."]
+transform = Transform3D(0.8415, 0, 0, 0, -0.01589033, 0.8413499, 0, -0.8413499, -0.01589033, -19.026417, 0.0914948, -15.563863)
+script = ExtResource("12_fdnlq")
+dialogue = ExtResource("21_cbgmd")
+
+[node name="CutsceneTrigger" parent="LeavingAlley" instance=ExtResource("12_6iyac")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeavingAlley/CutsceneTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1.000001, 2.9802322e-08, 0, -2.9802322e-08, 1.000001, 0.78827095, -0.4458084, 3.1872597)
+shape = SubResource("BoxShape3D_3pmx8")
+
 [node name="Pickup" type="Node3D" parent="."]
 script = ExtResource("21_3pmx8")
 dialogue = ExtResource("22_u50mg")
@@ -247,3 +233,6 @@ transform = Transform3D(0.8415, 0, 0, 0, -0.01589033, 0.8413499, 0, -0.8413499, 
 [node name="Badge" type="Sprite3D" parent="Pickup" groups=["CutsceneObjects", "CutscenePositions"]]
 transform = Transform3D(0.3, 0, 0, 0, -0.005665003, 0.29994652, 0, -0.29994652, -0.005665003, -20.416193, 0.0914948, -18.505428)
 texture = ExtResource("22_gt3je")
+
+[node name="Sky" parent="." instance=ExtResource("25_u50mg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.848, 33.15235)

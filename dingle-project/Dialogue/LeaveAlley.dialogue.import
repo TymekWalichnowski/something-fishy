@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://vjsjbxxbeop7"
+path="res://.godot/imported/LeaveAlley.dialogue-ec454c2021939ba678ce08e28143d2f7.tres"
+
+[deps]
+
+source_file="res://Dialogue/LeaveAlley.dialogue"
+dest_files=["res://.godot/imported/LeaveAlley.dialogue-ec454c2021939ba678ce08e28143d2f7.tres"]
+
+[params]
+
+defaults=true
